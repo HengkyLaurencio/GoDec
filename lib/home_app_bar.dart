@@ -38,7 +38,7 @@ class HomeAppBar extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          Container(
+          SizedBox(
             height: 35, // Ensure fixed height for the search box
             child: TextField(
               decoration: InputDecoration(
