@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:godec/button_grid.dart';
-import 'home_app_bar.dart';
-import 'balance_card.dart';
-import 'promo_card.dart';
+import 'package:godec/features/main/presentation/widget/button_grid.dart';
+import '../widget/home_app_bar.dart';
+import '../widget/balance_card.dart';
+import '../widget/promo_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

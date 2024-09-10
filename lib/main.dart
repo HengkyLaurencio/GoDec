@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:godec/main_page.dart';
+import 'package:godec/features/main/presentation/page/main_page.dart';
 
 void main() {
   runApp(const MyApp());
