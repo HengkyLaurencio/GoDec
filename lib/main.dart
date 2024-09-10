@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:godec/landing_page.dart';
 import 'package:godec/features/main/presentation/page/main_page.dart';
-
+import 'package:godec/features/main/presentation/page/home_page.dart';
+import 'package:godec/order_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const LandingPage(),
+      home: const OrderPage(),
     );
   }
 }
