@@ -7,7 +7,7 @@ class PromoForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Promo Form"),
+        title: const Text(""),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -36,7 +36,7 @@ class PromoForm extends StatelessWidget {
               width: double.infinity, 
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green, 
+                  backgroundColor: const Color(0xFF23274D), 
                   padding: const EdgeInsets.symmetric(vertical: 15), 
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30), 
