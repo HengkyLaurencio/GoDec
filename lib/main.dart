@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:godec/promo/presentation/promo_page.dart';
 import 'package:godec/landing_page.dart';
 import 'package:godec/features/main/presentation/page/main_page.dart';
 import 'package:godec/features/main/presentation/page/home_page.dart';
