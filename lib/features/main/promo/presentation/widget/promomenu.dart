@@ -28,9 +28,9 @@ class CardList extends StatelessWidget {
             child: Container(
               width: 330,
               height: 138,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30.0),
-                image: const DecorationImage(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30), bottomLeft: Radius.circular(0), bottomRight: Radius.circular(0)),
+                image:  DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
                     'https://www.geaves.com/media/catalog/product/cache/acd115faf6a75f6594ab269049b631ed/3/1/31552_5.webp',
@@ -68,3 +68,4 @@ class CardList extends StatelessWidget {
     );
   }
 }
+
