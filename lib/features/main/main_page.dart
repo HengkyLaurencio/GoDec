@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'package:godec/features/main/activity/presentation/page/activity.dart';
+import 'package:godec/features/main/promo/presentation/promo_page.dart';
+import 'package:godec/features/main/wallet/presentation/page/wallet.dart';
+import 'home/presentation/page/home_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -13,9 +16,9 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const Center(child: Text("Promo")),
-    const Center(child: Text("Payment")),
-    const Center(child: Text("Activity")),
+    const PromoPage(),
+    const WalletPage(),
+    const WhiteScreen(),
   ];
 
   @override

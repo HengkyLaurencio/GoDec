@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:godec/forgot_password_page.dart';
-import 'package:godec/signup_page.dart';
+import 'package:godec/features/auth/presentation/page/forgot_password_page.dart';
+import 'package:godec/features/auth/presentation/page/signup_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
