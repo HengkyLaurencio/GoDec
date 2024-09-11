@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:godec/features/main/promo/presentation/widget/promocard.dart';
 import 'package:godec/features/main/promo/presentation/widget/promocard_small.dart';
@@ -18,11 +19,13 @@ Widget build(BuildContext context) {
         Positioned(
           bottom: 400,
           top: 200,
+          right: 0,
+          left: 0,
           child: Opacity(
             opacity: 0.9, // Menyesuaikan transparansi gambar
             child: Image.network(
               imageUrl,
-              fit: BoxFit.cover, // Mengisi seluruh area
+              fit: BoxFit.fill, // Mengisi seluruh area
             ),
           ),
         ),
@@ -36,8 +39,9 @@ Widget build(BuildContext context) {
                 const SizedBox(height: 40.0),
                 // Tambahkan padding khusus untuk 'Promos'
                 const Padding(
-                  padding: EdgeInsets.only(left: 16), // Padding left untuk 'Promos'
+                  padding: EdgeInsets.only(left: 16, right: 20), // Padding left untuk 'Promos'
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'Promos',
@@ -46,9 +50,6 @@ Widget build(BuildContext context) {
                           fontWeight: FontWeight.w800,
                           color: Colors.black,
                         ),
-                      ),
-                      SizedBox(
-                        width: 220,
                       ),
                       Icon(Icons.person_rounded, size: 40),
                     ],
@@ -66,9 +67,14 @@ Widget build(BuildContext context) {
                       PromoCardSmall(
                         description: 'Got a promo code? Enter here',
                         icon: Icons.percent,
+                        color: 0xFFFFFFFF,
+                        fontColor: 0xFF000000,
                       ),
+                      
                       PromoCardSmall(
                         description: 'Invite and Earn',
+                        color: 0xFF23274D,
+                        fontColor: 0xFFFFFFFF,
                         icon: Icons.person,
                       ),
                       SizedBox(height: 38),
@@ -125,3 +131,4 @@ Widget build(BuildContext context) {
   );
 }
 }
+

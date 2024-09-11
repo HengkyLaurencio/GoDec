@@ -1,17 +1,20 @@
+
 import 'package:flutter/material.dart';
 
 class PromoCardSmall extends StatelessWidget {
   final String description;
   final IconData icon;
+  final int color;
+  final int fontColor;
 
   const PromoCardSmall(
-      {super.key, required this.description, required this.icon});
+      {super.key, required this.description, required this.icon, required this.color, required this.fontColor});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      color: Colors.white,
+      color: Color(color),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
@@ -23,16 +26,16 @@ class PromoCardSmall extends StatelessWidget {
             Icon(
               icon, 
               size: 24.0,
-              color: Colors.black,
+              color: Color(fontColor),
             ),
             const SizedBox(width: 16),
             Expanded(
               child: Text(
                 description,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.w700,
-                  color: Colors.black,
+                  color: Color(fontColor),
                 ),
               ),
             ),
