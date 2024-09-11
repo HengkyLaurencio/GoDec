@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:godec/login_page.dart';
+import 'package:godec/features/auth/presentation/page/login_page.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
