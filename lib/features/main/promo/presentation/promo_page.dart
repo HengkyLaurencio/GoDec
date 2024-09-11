@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:godec/features/main/promo/presentation/promo_code.dart';
 import 'package:godec/features/main/promo/presentation/widget/promocard.dart';
 import 'package:godec/features/main/promo/presentation/widget/promocard_small.dart';
 import 'package:godec/features/main/promo/presentation/widget/promomenu.dart';
@@ -65,6 +66,7 @@ Widget build(BuildContext context) {
                         description: 'Vouchers & packs',
                       ),
                       PromoCardSmall(
+                        targetScreen: PromoForm(),
                         description: 'Got a promo code? Enter here',
                         icon: Icons.percent,
                         color: 0xFFFFFFFF,
@@ -72,6 +74,7 @@ Widget build(BuildContext context) {
                       ),
                       
                       PromoCardSmall(
+                        targetScreen: PromoForm(),
                         description: 'Invite and Earn',
                         color: 0xFF23274D,
                         fontColor: 0xFFFFFFFF,
