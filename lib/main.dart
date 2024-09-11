@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:godec/features/main/main_page.dart';
+import 'package:godec/features/order/presentation/page/front_order_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MainPage(),
+      home: const FrontOrderPage(),
     );
   }
 }
