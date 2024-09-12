@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:godec/features/main/main_page.dart';
+import 'package:godec/features/navigation/main_navigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MainPage(),
+      home: const MainNavigation(),
     );
   }
 }

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:godec/features/main/activity/presentation/page/activity.dart';
-import 'package:godec/features/main/promo/presentation/promo_page.dart';
-import 'package:godec/features/main/wallet/presentation/page/wallet.dart';
-import 'home/presentation/page/home_page.dart';
+import 'package:godec/features/page/activity.dart';
+import 'package:godec/features/promo/presentation/promo_page.dart';
+import 'package:godec/features/wallet/presentation/page/wallet.dart';
+import '../home/presentation/page/home_page.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class MainNavigation extends StatefulWidget {
+  const MainNavigation({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<MainNavigation> createState() => _MainNavigationState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
