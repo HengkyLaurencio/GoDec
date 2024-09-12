@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:godec/features/auth/presentation/page/forgot_password_page.dart';
+import 'package:go_router/go_router.dart';
 import 'package:godec/features/auth/presentation/page/signup_page.dart';
 import 'package:godec/features/auth/presentation/widget/auth_bottom.dart';
 import 'package:godec/features/auth/presentation/widget/auth_checkbox.dart';
@@ -49,25 +49,22 @@ class LoginPage extends StatelessWidget {
                             const AuthCheckbox(text: 'Remember Me'),
                             TextButton(
                               onPressed: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ForgotPasswordPage()));
+                                context.push('/auth/forgetpassword');
                               },
                               child: Text(
                                 'Forgot Password?',
                                 style: TextStyle(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .surface),
+                                    color:
+                                        Theme.of(context).colorScheme.surface),
                               ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 20.0),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.go('/home');
+                          },
                           style: ElevatedButton.styleFrom(
                             minimumSize: const Size(double.infinity, 50),
                           ),
