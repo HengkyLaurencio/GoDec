@@ -5,15 +5,17 @@ class WhiteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 70),
-            Align(
+            const Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
+                padding: EdgeInsets.symmetric(horizontal: 25),
                 child: Text(
                   'Activity',
                   style: TextStyle(
@@ -27,17 +29,16 @@ class WhiteScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Container(
-                width: double.infinity,
+                width: screenWidth,
                 height: 35,
                 decoration: BoxDecoration(
                   color: const Color(0xFF23274D),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Align(
+                child: const Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 16),
+                    padding: EdgeInsets.only(left: 16),
                     child: Text(
                       'Kumpulan Promo Yang Ada',
                       style: TextStyle(
@@ -51,37 +52,43 @@ class WhiteScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40),
-            _buildHistoryCard(),
+            _buildHistoryCard(
+              location: 'Jakarta, Indonesia',
+              price: 'Rp 100.000',
+            ),
             const SizedBox(height: 20),
-            _buildHistoryCard(),
+            _buildHistoryCard(
+              location:
+                  'Bandung, Indonesia Indonesia Indonesia Indonesia Indonesia Indonesia',
+              price: 'Rp 75.000',
+            ),
             const SizedBox(height: 20),
-            _buildHistoryCard(),
+            _buildHistoryCard(
+              location: 'Bandung, Indonesia',
+              price: 'Rp 75.000',
+            ),
             const SizedBox(height: 20),
-            _buildHistoryCard(),
+            _buildHistoryCard(
+              location: 'Surabaya, Indonesia',
+              price: 'Rp 90.000',
+            ),
             const SizedBox(height: 20),
-            _buildHistoryCard(),
-            const SizedBox(height: 20),
-            _buildHistoryCard(),
-            const SizedBox(height: 20),
-            _buildHistoryCard(),
-            const SizedBox(height: 20),
-            _buildHistoryCard(),
-            const SizedBox(height: 20),
-            _buildHistoryCard(),
-            const SizedBox(height: 20),
-            _buildHistoryCard(),
+            _buildHistoryCard(
+              location: 'Yogyakarta, Indonesia',
+              price: 'Rp 120.000',
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildHistoryCard() {
+  Widget _buildHistoryCard({required String location, required String price}) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
         width: double.infinity,
-        height: 130,
+        height: 140,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -110,43 +117,57 @@ class WhiteScreen extends StatelessWidget {
               ),
               const SizedBox(width: 16),
 
-              // Informasi Lokasi dan Harga
+              // Informasi Lokasi, Harga, dan Tombol Pesan Lagi
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Lokasi Tujuan (1/2 Baris)
                     Text(
-                      'Lokasi Terakhir',
-                      style: TextStyle(
+                      location,
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
+                      maxLines: 2, // Bisa 1 atau 2 baris
+                      overflow:
+                          TextOverflow.ellipsis, // Overflow pada teks panjang
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Rp 50.000',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[600],
-                      ),
+
+                    // Harga dan Tombol Pesan Lagi
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          price,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 8,
+                              horizontal: 12,
+                            ),
+                            backgroundColor: const Color(0xFF23274D),
+                            foregroundColor: Colors.white,
+                            minimumSize: const Size(80, 32),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          child: const Text(
+                            'Pesan Lagi',
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
-                ),
-              ),
-
-              // Tombol Pesan Lagi
-              Align(
-                alignment: Alignment.bottomRight,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF23274D),
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: const Text('Pesan Lagi'),
                 ),
               ),
             ],
