@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:godec/features/page/activity.dart';
+import 'package:godec/features/activity/presentation/page/activity.dart';
 import 'package:godec/features/promo/presentation/promo_page.dart';
 import 'package:godec/features/wallet/presentation/page/wallet.dart';
-import '../home/presentation/page/home_page.dart';
+import 'package:godec/features/home/presentation/page/home_page.dart';
 
 class MainNavigation extends StatefulWidget {
-  const MainNavigation({super.key});
+  final int currentIndex;
+
+  const MainNavigation({super.key, this.currentIndex = 0});
 
   @override
   State<MainNavigation> createState() => _MainNavigationState();
 }
 
 class _MainNavigationState extends State<MainNavigation> {
-  int _currentIndex = 0;
+  late int _currentIndex;
 
   final List<Widget> _pages = [
     const HomePage(),
@@ -20,6 +22,12 @@ class _MainNavigationState extends State<MainNavigation> {
     const WalletPage(),
     const WhiteScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.currentIndex;
+  }
 
   @override
   Widget build(BuildContext context) {

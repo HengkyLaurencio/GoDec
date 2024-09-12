@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
+import 'package:godec/core/router/app_router.dart';
 import 'package:godec/features/auth/presentation/page/login_page.dart';
 import 'package:godec/features/auth/presentation/page/signup_page.dart';
 
@@ -37,10 +39,7 @@ class LandingPage extends StatelessWidget {
               const SizedBox(height: 30.0),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SignupPage()));
+                  context.go('/auth/signup');
                 },
                 style: ElevatedButton.styleFrom(
                     minimumSize: const Size(double.infinity, 50),
@@ -53,10 +52,7 @@ class LandingPage extends StatelessWidget {
               const SizedBox(height: 10.0),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()));
+                  context.go('/auth/login');
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(double.infinity, 50),
