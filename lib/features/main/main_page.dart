@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:godec/features/main/activity/presentation/page/activity.dart';
 import 'package:godec/features/main/promo/presentation/promo_page.dart';
-import 'package:godec/features/main/wallet/presentation/page/wallet.dart';
+import 'package:godec/features/main/wallet/presentation/page/wallet_page.dart';
 import 'home/presentation/page/home_page.dart';
 
 class MainPage extends StatefulWidget {
