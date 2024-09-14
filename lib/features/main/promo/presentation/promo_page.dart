@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:godec/features/main/promo/presentation/promo_code.dart';
+import 'package:godec/features/main/promo/presentation/promo_list.dart';
 import 'package:godec/features/main/promo/presentation/widget/promocard.dart';
 import 'package:godec/features/main/promo/presentation/widget/promocard_small.dart';
 import 'package:godec/features/main/promo/presentation/widget/promomenu.dart';
+import 'package:godec/features/main/promo/presentation/promo_desc.dart';
 
 class PromoPage extends StatelessWidget {
   final String imageUrl =
@@ -68,6 +70,7 @@ class PromoPage extends StatelessWidget {
                     child: const Column(
                       children: [
                         PromoCard(
+                          targetScreen: PromoList(),
                           title: '186',
                           description: 'Vouchers & packs',
                         ),
@@ -100,6 +103,7 @@ class PromoPage extends StatelessWidget {
                           padding: EdgeInsets.only(
                               right: 10, bottom: 10, left: 16),
                           child: CardList(
+                            targetScreen: PromoDesc(),
                             title: 'OTW dari & ke bandara hemat banget!',
                             description: 'Kode GOBANDARA diskon s.d. 300RB',
                           ),
@@ -121,6 +125,7 @@ class PromoPage extends StatelessWidget {
                           padding: EdgeInsets.only(
                               right: 10, bottom: 10, left: 16),
                           child: CardList(
+                            targetScreen: PromoDesc(),
                             title: 'Promo GoDec tiap weekend!',
                             description:
                                 'Pasti diskon s.d. 30RB ke mana pun. Klik\nuntuk dapetin promonya!',
