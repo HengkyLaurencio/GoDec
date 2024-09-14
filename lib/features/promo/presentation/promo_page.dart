@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:godec/features/main/promo/presentation/promo_code.dart';
-import 'package:godec/features/main/promo/presentation/promo_list.dart';
-import 'package:godec/features/main/promo/presentation/widget/promocard.dart';
-import 'package:godec/features/main/promo/presentation/widget/promocard_small.dart';
-import 'package:godec/features/main/promo/presentation/widget/promomenu.dart';
-import 'package:godec/features/main/promo/presentation/promo_desc.dart';
+import 'package:godec/features/promo/presentation/promo_code.dart';
+import 'package:godec/features/promo/presentation/promo_list.dart';
+import 'package:godec/features/promo/presentation/widget/promocard.dart';
+import 'package:godec/features/promo/presentation/widget/promocard_small.dart';
+import 'package:godec/features/promo/presentation/widget/promomenu.dart';
+import 'package:godec/features/promo/presentation/promo_desc.dart';
 
 class PromoPage extends StatelessWidget {
   final String imageUrl =
