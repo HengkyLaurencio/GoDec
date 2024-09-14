@@ -17,43 +17,42 @@ class PromoCard extends StatelessWidget {
       color: Colors.white,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
-          side: BorderSide(
-            color: Colors.grey.withOpacity(0.5),
+          side: const BorderSide(
+            color: Color(0xFF23274D),
             width: 5,
           )),
       child: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: Column(
-                children: [
                   Row(
                     children: [
                       Text(
                         title,
                         style: const TextStyle(
-                          fontSize: 20.0,
+                          fontSize: 25.0,
                           fontWeight: FontWeight.w800,
                           color: Colors.black,
                         ),
                       ),
-                      const SizedBox(width: 13),
+                      SizedBox(width: 16,),
                       Text(
                         description,
                         style: const TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 20.0,
                             color: Colors.black87,
-                            fontWeight: FontWeight.w700),
+                            fontWeight: FontWeight.w800),
                       ),
-                      const SizedBox(width: 75),
-                      const Icon(Icons.arrow_forward_ios, size: 20),
                     ],
                   ),
-                ],
-              ),
-            ),
-          ],
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                    Icon(Icons.arrow_forward_ios, size: 20)
+                  ],
+                  )
+          ]
         ),
       ),
     );

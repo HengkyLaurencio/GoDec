@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:godec/features/main/main_page.dart';
+import 'package:godec/core/router/app_router.dart';
+import 'core/themes/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,17 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'GoDec',
-      theme: ThemeData(
-        colorScheme: const ColorScheme.light(
-            surface: Color(0xFFFFFFFF),
-            onSurface: Color(0xFF23274D),
-            primary: Color(0xFF353535)),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.lightTheme,
+      routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
-      home: const MainPage(),
     );
   }
 }

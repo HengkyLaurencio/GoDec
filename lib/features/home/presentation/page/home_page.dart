@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:godec/features/main/home/presentation/widget/button_grid.dart';
+import 'package:godec/features/home/presentation/widget/button_grid.dart';
 import '../widget/home_app_bar.dart';
 import '../widget/balance_card.dart';
 import '../widget/promo_card.dart';
