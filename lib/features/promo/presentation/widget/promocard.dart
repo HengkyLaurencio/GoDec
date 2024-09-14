@@ -3,16 +3,26 @@ import 'package:flutter/material.dart';
 class PromoCard extends StatelessWidget {
   final String title;
   final String description;
+  final Widget targetScreen;
 
   const PromoCard({
     super.key,
     required this.title,
     required this.description,
+    required this.targetScreen,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return InkWell(
+    onTap: (){
+         Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => targetScreen),
+        );
+      },
+
+    child: Card(
       elevation: 5,
       color: Colors.white,
       shape: RoundedRectangleBorder(
@@ -54,6 +64,7 @@ class PromoCard extends StatelessWidget {
                   )
           ]
         ),
+      ),
       ),
     );
   }
