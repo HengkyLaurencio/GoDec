@@ -38,14 +38,14 @@ class PromoPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-
                   Container(
-                    padding: const EdgeInsets.only(left: 23, right: 20, top: 20, bottom: 10),
+                    padding: const EdgeInsets.only(
+                        left: 23, right: 20, top: 20, bottom: 10),
                     decoration: const BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
-                          color: Colors.grey, 
-                          width: 1.0, 
+                          color: Colors.grey,
+                          width: 1.0,
                         ),
                       ),
                     ),
@@ -100,8 +100,8 @@ class PromoPage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return const Padding(
-                          padding: EdgeInsets.only(
-                              right: 10, bottom: 10, left: 16),
+                          padding:
+                              EdgeInsets.only(right: 10, bottom: 10, left: 16),
                           child: CardList(
                             targetScreen: PromoDesc(),
                             title: 'OTW dari & ke bandara hemat banget!',
@@ -122,8 +122,8 @@ class PromoPage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         return const Padding(
-                          padding: EdgeInsets.only(
-                              right: 10, bottom: 10, left: 16),
+                          padding:
+                              EdgeInsets.only(right: 10, bottom: 10, left: 16),
                           child: CardList(
                             targetScreen: PromoDesc(),
                             title: 'Promo GoDec tiap weekend!',

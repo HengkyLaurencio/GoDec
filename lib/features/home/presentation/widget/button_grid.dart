@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:godec/core/router/app_router.dart';
 
 class ButtonGrid extends StatelessWidget {
   const ButtonGrid({super.key});
@@ -14,7 +16,16 @@ class ButtonGrid extends StatelessWidget {
           const NeverScrollableScrollPhysics(), // Prevents internal scrolling
       children: List.generate(8, (index) {
         return ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            switch (index) {
+              case 0:
+                context.push('/order');
+                break;
+              case 7:
+                context.push('/auth/landing');
+                break;
+            }
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.grey[700],
             shape: RoundedRectangleBorder(
