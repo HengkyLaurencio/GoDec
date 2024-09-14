@@ -3,7 +3,7 @@ import 'package:godec/features/wallet/presentation/page/widget/balance_box.dart'
 import 'package:godec/features/wallet/presentation/page/widget/wallet_feature.dart';
 
 class WalletPage extends StatelessWidget {
-  const WalletPage({Key? key}) : super(key: key);
+  const WalletPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class WalletPage extends StatelessWidget {
                 width: double.infinity,
                 height: 250,
                 color: Colors.grey.shade800,
-                margin: EdgeInsets.only(bottom: 50),
+                margin: const EdgeInsets.only(bottom: 50),
                 child: Container(
                   decoration: const BoxDecoration(
                     image: DecorationImage(

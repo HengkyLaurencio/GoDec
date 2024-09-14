@@ -5,7 +5,12 @@ class AuthBottom extends StatelessWidget {
   final MaterialPageRoute route;
   final Color bgColor;
   final Color color;
-  const AuthBottom({super.key, required this.text, required this.route, required this.bgColor, required this.color});
+  const AuthBottom(
+      {super.key,
+      required this.text,
+      required this.route,
+      required this.bgColor,
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +19,7 @@ class AuthBottom extends StatelessWidget {
       decoration: BoxDecoration(color: bgColor),
       child: TextButton(
         onPressed: () {
-          Navigator.pushReplacement(context,
-              route);
+          Navigator.pushReplacement(context, route);
         },
         child: Text(
           text,
