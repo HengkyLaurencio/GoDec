@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:godec/features/main/wallet/presentation/page/widget/balance_box.dart';
-import 'package:godec/features/main/wallet/presentation/page/widget/wallet_feature.dart';
+import 'package:godec/features/wallet/presentation/page/widget/balance_box.dart';
+import 'package:godec/features/wallet/presentation/page/widget/wallet_feature.dart';
 
 class WalletPage extends StatelessWidget {
   const WalletPage({Key? key}) : super(key: key);
