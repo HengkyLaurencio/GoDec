@@ -7,12 +7,12 @@ class BalanceBox extends StatelessWidget {
   final Gradient gradient;
 
   const BalanceBox({
-    Key? key,
+    super.key,
     required this.title,
     required this.amount,
     required this.points,
     required this.gradient,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class BalanceBox extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        gradient: gradient, 
+        gradient: gradient,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),

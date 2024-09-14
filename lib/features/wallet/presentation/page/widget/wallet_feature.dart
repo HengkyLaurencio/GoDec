@@ -7,15 +7,15 @@ class WalletFeature extends StatefulWidget {
   final IconData icon;
 
   const WalletFeature({
-    Key? key,
+    super.key,
     required this.title,
     required this.height,
     required this.margin,
     required this.icon,
-  }) : super(key: key);
+  });
 
   @override
-  _WalletFeatureState createState() => _WalletFeatureState();
+  State<WalletFeature> createState() => _WalletFeatureState();
 }
 
 class _WalletFeatureState extends State<WalletFeature> {

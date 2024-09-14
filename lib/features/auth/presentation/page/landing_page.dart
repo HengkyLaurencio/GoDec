@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:godec/core/router/app_router.dart';
-import 'package:godec/features/auth/presentation/page/login_page.dart';
-import 'package:godec/features/auth/presentation/page/signup_page.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
