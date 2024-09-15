@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ArrowBack extends StatelessWidget {
-  const ArrowBack({super.key});
+class OCardContainerTop extends StatelessWidget {
+  const OCardContainerTop({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 30,
-      height: 30,
+      height: 300,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
-        shape: BoxShape.circle,
+        borderRadius: BorderRadius.circular(25),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.4),
@@ -19,12 +18,6 @@ class ArrowBack extends StatelessWidget {
             offset: const Offset(0, 5),
           ),
         ],
-      ),
-      child: const Center(
-        child: Icon(
-          Icons.arrow_back,
-          size: 20,
-        ),
       ),
     );
   }
