@@ -28,7 +28,7 @@ class CardContainerBot extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           HistoryContainer(),
