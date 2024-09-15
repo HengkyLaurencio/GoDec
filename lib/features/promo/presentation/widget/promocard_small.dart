@@ -54,7 +54,7 @@ class PromoCardSmall extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 14),
-              const Icon(Icons.arrow_forward_ios, size: 20),
+              Icon(Icons.arrow_forward_ios, size: 20, color: Color(fontColor),),
             ],
           ),
         ),
