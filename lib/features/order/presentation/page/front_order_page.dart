@@ -29,18 +29,18 @@ class FrontOrderPage extends StatelessWidget {
                     ),
                   ),
                   const Positioned(
-                    top: 35,
-                    left: 6,
+                    top: 45,
+                    left: 20,
                     child: ArrowBack(),
                   ),
                   const Positioned(
-                    top: 75,
+                    top: 90,
                     left: 20,
                     right: 20,
                     child: CardContainerTop(),
                   ),
                   const Positioned(
-                    top: 75,
+                    top: 90,
                     left: 20,
                     right: 20,
                     child: CardContainerStack(),

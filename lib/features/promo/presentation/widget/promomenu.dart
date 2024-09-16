@@ -3,11 +3,24 @@ import 'package:flutter/material.dart';
 class CardList extends StatelessWidget {
   final String title;
   final String description;
-  const CardList({super.key, required this.title, required this.description});
-
+  final Widget targetScreen;
+  const CardList({super.key, 
+    required this.title, 
+    required this.description,
+    required this.targetScreen,
+    });
+  
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+      onTap: (){
+         Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => targetScreen),
+        );
+      },
+
+      child: Container(
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
@@ -65,7 +78,8 @@ class CardList extends StatelessWidget {
           ),
         ],
       ),
+    )
     );
+    
   }
 }
-

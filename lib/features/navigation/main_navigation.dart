@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:godec/features/activity/presentation/page/activity.dart';
 import 'package:godec/features/promo/presentation/promo_page.dart';
-import 'package:godec/features/wallet/presentation/page/wallet.dart';
 import 'package:godec/features/home/presentation/page/home_page.dart';
+import 'package:godec/features/wallet/presentation/page/wallet_page.dart';
 
 class MainNavigation extends StatefulWidget {
   final int currentIndex;
