@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:godec/features/auth/presentation/page/signup_page.dart';
 import 'package:godec/features/auth/presentation/widget/auth_bottom.dart';
 import 'package:godec/features/auth/presentation/widget/auth_checkbox.dart';
 import 'package:godec/features/auth/presentation/widget/auth_field.dart';
@@ -35,13 +36,11 @@ class LoginPage extends StatelessWidget {
                       children: [
                         const AuthField(
                             label: 'Email',
-                            icon: Icons.email,
                             type: TextInputType.emailAddress,
                             password: false),
                         const SizedBox(height: 10.0),
                         const AuthField(
                             label: 'Password',
-                            icon: Icons.password,
                             type: TextInputType.text,
                             password: true),
                         Row(
@@ -81,7 +80,7 @@ class LoginPage extends StatelessWidget {
         ),
         bottomNavigationBar: AuthBottom(
             text: "Don't have any account",
-            route: '/auth/signup',
+            route: MaterialPageRoute(builder: (context) => const SignupPage()),
             bgColor: Theme.of(context).colorScheme.onSurface,
             color: Theme.of(context).colorScheme.surface));
   }
