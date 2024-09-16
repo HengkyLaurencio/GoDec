@@ -40,7 +40,7 @@ class WhiteScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(left: 16),
                     child: Text(
-                      'Kumpulan Promo Yang Ada',
+                      'Promos',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -59,7 +59,7 @@ class WhiteScreen extends StatelessWidget {
             const SizedBox(height: 20),
             _buildHistoryCard(
               location:
-                  'Bandung, Indonesia Indonesia Indonesia Indonesia Indonesia Indonesia',
+                  'Bandung, Indonesia',
               price: 'Rp 75.000',
             ),
             const SizedBox(height: 20),
