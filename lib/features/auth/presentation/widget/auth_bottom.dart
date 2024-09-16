@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AuthBottom extends StatelessWidget {
   final String text;
-  final MaterialPageRoute route;
+  final String route;
   final Color bgColor;
   final Color color;
-  const AuthBottom({super.key, required this.text, required this.route, required this.bgColor, required this.color});
+  const AuthBottom(
+      {super.key,
+      required this.text,
+      required this.route,
+      required this.bgColor,
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +20,7 @@ class AuthBottom extends StatelessWidget {
       decoration: BoxDecoration(color: bgColor),
       child: TextButton(
         onPressed: () {
-          Navigator.pushReplacement(context,
-              route);
+          context.push(route);
         },
         child: Text(
           text,
