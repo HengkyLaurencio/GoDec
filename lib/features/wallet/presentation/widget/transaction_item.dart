@@ -18,7 +18,7 @@ class TransactionItem extends StatelessWidget {
     return ListTile(
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: 'Roboto', 
           fontSize: 18,
           fontWeight: FontWeight.w500,

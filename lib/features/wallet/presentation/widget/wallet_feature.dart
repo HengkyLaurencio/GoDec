@@ -5,6 +5,7 @@ class WalletFeature extends StatefulWidget {
   final double height;
   final EdgeInsetsGeometry margin;
   final IconData icon;
+  final VoidCallback onTap; 
 
   const WalletFeature({
     super.key,
@@ -12,6 +13,7 @@ class WalletFeature extends StatefulWidget {
     required this.height,
     required this.margin,
     required this.icon,
+    required this.onTap,  
   });
 
   @override
@@ -31,6 +33,7 @@ class _WalletFeatureState extends State<WalletFeature> {
     setState(() {
       _elevation = 0;
     });
+    widget.onTap();
   }
 
   void _onTapCancel() {
