@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:godec/features/auth/presentation/page/login_page.dart';
 
 import '../widget/auth_bottom.dart';
 import '../widget/auth_field.dart';
@@ -36,31 +37,26 @@ class SignupPage extends StatelessWidget {
                     const SizedBox(height: 100.0),
                     const AuthField(
                         label: 'Name',
-                        icon: Icons.person,
                         type: TextInputType.name,
                         password: false),
                     const SizedBox(height: 10.0),
                     const AuthField(
                         label: 'Email',
-                        icon: Icons.email,
                         type: TextInputType.emailAddress,
                         password: false),
                     const SizedBox(height: 10.0),
                     const AuthField(
                         label: 'Phone Number',
-                        icon: Icons.phone,
                         type: TextInputType.number,
                         password: false),
                     const SizedBox(height: 10.0),
                     const AuthField(
                         label: 'Password',
-                        icon: Icons.password,
                         type: TextInputType.text,
                         password: true),
                     const SizedBox(height: 10.0),
                     const AuthField(
                         label: 'Re-Enter Password',
-                        icon: Icons.password,
                         type: TextInputType.emailAddress,
                         password: true),
                     const SizedBox(height: 10.0),
@@ -110,7 +106,7 @@ class SignupPage extends StatelessWidget {
         ),
         bottomNavigationBar: AuthBottom(
             text: "Already have an account?",
-            route: '/auth/login',
+            route: MaterialPageRoute(builder: (context) => const LoginPage()),
             bgColor: Theme.of(context).colorScheme.surface,
             color: Theme.of(context).colorScheme.onSurface));
   }

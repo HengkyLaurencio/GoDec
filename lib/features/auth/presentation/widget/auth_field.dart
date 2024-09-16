@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 
 class AuthField extends StatefulWidget {
   final String label;
-  final IconData icon;
   final TextInputType type;
   final bool password;
 
   const AuthField(
       {super.key,
       required this.label,
-      required this.icon,
       required this.type,
       required this.password});
 
@@ -24,13 +22,9 @@ class _AuthFieldState extends State<AuthField> {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        prefixIcon: Icon(
-          widget.icon,
-          color: Theme.of(context).colorScheme.onSurface,
-        ),
         labelText: widget.label,
-        floatingLabelStyle:
-            TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+        floatingLabelStyle: TextStyle(
+            color: Theme.of(context).colorScheme.onPrimary),
         filled: true,
         fillColor: Theme.of(context).colorScheme.surface,
         border: OutlineInputBorder(
