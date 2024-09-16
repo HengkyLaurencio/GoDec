@@ -4,7 +4,7 @@ import 'package:godec/features/wallet/presentation/page/widget/transaction_item'
 class TransactionHistory extends StatelessWidget {
   final int itemCount;
 
-  const TransactionHistory({Key? key, this.itemCount = 10}) : super(key: key);
+  const TransactionHistory({super.key, this.itemCount = 10});
 
   @override
   Widget build(BuildContext context) {
