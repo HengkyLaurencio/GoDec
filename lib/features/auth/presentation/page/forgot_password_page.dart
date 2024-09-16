@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:godec/features/auth/presentation/page/login_page.dart';
 
 import '../widget/auth_bottom.dart';
 import '../widget/auth_field.dart';
@@ -64,7 +63,7 @@ class ForgotPasswordPage extends StatelessWidget {
         ),
         bottomNavigationBar: AuthBottom(
             text: "Already have an account?",
-            route: MaterialPageRoute(builder: (context) => const LoginPage()),
+            route: '/auth/login',
             bgColor: Theme.of(context).colorScheme.onSurface,
             color: Theme.of(context).colorScheme.surface));
   }

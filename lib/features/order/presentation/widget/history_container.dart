@@ -15,6 +15,5 @@ class HistoryContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
     );
-    ;
   }
 }
