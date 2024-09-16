@@ -19,7 +19,7 @@ class AuthBottom extends StatelessWidget {
       decoration: BoxDecoration(color: bgColor),
       child: TextButton(
         onPressed: () {
-          Navigator.pushReplacement(context, route);
+          context.push(route);
         },
         child: Text(
           text,
