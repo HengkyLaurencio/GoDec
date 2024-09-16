@@ -13,7 +13,7 @@ class PickContainer extends StatelessWidget {
         height: sHeight,
         width: sWidth,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onPrimary,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(15),
         ),
       ),
