@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:godec/features/profile/widget/history_card.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -36,11 +37,10 @@ class Profile extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Transform.translate(
-                offset: const Offset(0, -50), 
+                offset: const Offset(0, -50),
                 child: Container(
                   width: screenWidth,
-                  height:
-                      120, 
+                  height: 120,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
@@ -53,11 +53,10 @@ class Profile extends StatelessWidget {
                       ),
                     ],
                   ),
-
-                    child: const Padding(
-                    padding: EdgeInsets.all(16.0), 
+                  child: const Padding(
+                    padding: EdgeInsets.all(16.0),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start, 
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +69,7 @@ class Profile extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(width: 15), 
+                        SizedBox(width: 15),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -82,7 +81,7 @@ class Profile extends StatelessWidget {
                                 color: Colors.black,
                               ),
                             ),
-                            SizedBox(height: 4), 
+                            SizedBox(height: 4),
                             Text(
                               'Email User',
                               style: TextStyle(
@@ -111,21 +110,24 @@ class Profile extends StatelessWidget {
 
             const Divider(
               thickness: 1,
-              color: Colors.black, // Warna garis
-              indent: 25, // Jarak dari tepi kiri
-              endIndent: 25, // Jarak dari tepi kanan
+              color: Colors.black, 
+              indent: 25, 
+              endIndent: 25, 
             ),
-            
-            Container(
-              width: screenWidth,
-              height: screenHeight * 0.60, 
-              color: Colors.white,
+
+            const SizedBox(height: 20),
+            const HistoryCard(
+              tulisan: 'Promos',
             ),
+
+            const SizedBox(height: 20),
+            const HistoryCard(
+              tulisan: 'Promos',
+            ),
+
           ],
         ),
       ),
     );
-
-    
   }
 }
