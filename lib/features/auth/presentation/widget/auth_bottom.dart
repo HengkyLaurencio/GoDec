@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class AuthBottom extends StatelessWidget {
   final String text;
-  final String route;
+  final MaterialPageRoute route;
   final Color bgColor;
   final Color color;
   const AuthBottom(
