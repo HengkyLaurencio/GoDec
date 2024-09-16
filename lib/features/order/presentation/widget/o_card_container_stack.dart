@@ -6,8 +6,9 @@ class OCardContainerStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height * 0.235;
     return Container(
-      height: 190,
+      height: height,
       margin: const EdgeInsets.all(3),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.onSurface,
