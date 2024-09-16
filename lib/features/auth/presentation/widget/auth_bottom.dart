@@ -21,6 +21,8 @@ class AuthBottom extends StatelessWidget {
       child: TextButton(
         onPressed: () {
           context.push(route);
+
+          test;
         },
         child: Text(
           text,
