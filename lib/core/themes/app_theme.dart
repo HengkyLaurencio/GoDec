@@ -7,6 +7,7 @@ class AppTheme {
       onSurface: Color(0xFF23274D),
       primary: Color(0xFF353535),
       onPrimary: Color(0xFF336B87),
+      secondary: Color(0xFF4CAF50)
     ),
     useMaterial3: true,
   );
