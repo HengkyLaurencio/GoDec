@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:godec/features/wallet/presentation/page/widget/transaction_item';
+import 'package:godec/features/wallet/presentation/widget/transaction_item.dart';
 
 class TransactionHistory extends StatelessWidget {
   final int itemCount;

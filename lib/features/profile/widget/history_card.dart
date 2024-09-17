@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart'; 
+import 'package:go_router/go_router.dart';
 
 class HistoryCard extends StatelessWidget {
   final String tulisan;
+  final String targetscreen;
+  final IconData icons;
 
   const HistoryCard({
-super.key,
+    super.key,
     required this.tulisan,
+    required this.targetscreen,
+    required this.icons,
   });
 
   @override
@@ -15,7 +19,7 @@ super.key,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: InkWell(
         onTap: () {
-          context.push('/promo');
+          context.push(targetscreen);
         },
         child: Container(
           width: double.infinity,
@@ -25,30 +29,38 @@ super.key,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                spreadRadius: 5,
-                blurRadius: 10,
-                offset: const Offset(0, 4),
+                color: Colors.black.withOpacity(0.2),
+                spreadRadius: 3,
+                blurRadius: 5,
+                offset: const Offset(0, 2),
               ),
             ],
           ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  tulisan,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+          child:Padding(
+            padding: const EdgeInsets.all(15),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    icons,
+                    size: 30,
+                    color: Colors.grey[700],
                   ),
-                ),
-              ],
-            ),
+                  const SizedBox(width: 12,),
+                  Text(
+                    tulisan,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+          ),
           ),
         ),
-      ),
+      
     );
   }
 }
