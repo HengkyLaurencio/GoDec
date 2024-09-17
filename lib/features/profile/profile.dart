@@ -117,13 +117,32 @@ class Profile extends StatelessWidget {
 
             const SizedBox(height: 20),
             const HistoryCard(
-              tulisan: 'Promos',
+              tulisan: 'Edit Profile',
+              targetscreen: '/home',
+              icons: Icons.edit,
             ),
 
             const SizedBox(height: 20),
             const HistoryCard(
               tulisan: 'Promos',
+              targetscreen: '/promo',
+              icons: Icons.percent_rounded,
             ),
+
+            const SizedBox(height: 20),
+            const HistoryCard(
+              tulisan: 'Wallet',
+              targetscreen: '/wallet',
+              icons: Icons.account_balance_wallet,
+            ),
+
+            const SizedBox(height: 20),
+            const HistoryCard(
+              tulisan: 'Activity',
+              targetscreen: '/activity',
+              icons: Icons.history,
+            ),
+
 
           ],
         ),

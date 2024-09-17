@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MainHeader extends StatelessWidget {
   final String title;
@@ -32,7 +33,7 @@ class MainHeader extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print('Profile picture tapped!');
+              context.push('/profile');
             },
             child: const CircleAvatar(
               radius: 24,
