@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:godec/core/widget/main_header.dart';
-import 'package:godec/features/promo/presentation/promo_code.dart';
-import 'package:godec/features/promo/presentation/promo_list.dart';
 import 'package:godec/features/promo/presentation/widget/promocard.dart';
 import 'package:godec/features/promo/presentation/widget/promocard_small.dart';
 import 'package:godec/features/promo/presentation/widget/promomenu.dart';
-import 'package:godec/features/promo/presentation/promo_desc.dart';
 
 class PromoPage extends StatelessWidget {
   final String imageUrl =
@@ -37,7 +34,6 @@ class PromoPage extends StatelessWidget {
                 ),
               ),
             ),
-            // Layer untuk konten di atas gambar
             SingleChildScrollView(
               child: Container(
                 padding: const EdgeInsets.only(bottom: 16),
@@ -50,19 +46,19 @@ class PromoPage extends StatelessWidget {
                       child: const Column(
                         children: [
                           PromoCard(
-                            targetScreen: PromoList(),
-                            title: '186',
+                            targetScreen: '/promo/list',
+                            title: '88',
                             description: 'Vouchers & packs',
                           ),
                           PromoCardSmall(
-                            targetScreen: PromoForm(),
+                            targetScreen: 'promo/form',
                             description: 'Got a promo code? Enter here',
                             icon: Icons.percent,
                             color: 0xFFFFFFFF,
                             fontColor: 0xFF000000,
                           ),
                           PromoCardSmall(
-                            targetScreen: PromoForm(),
+                            targetScreen: 'promo/form',
                             description: 'Invite and Earn',
                             color: 0xFF23274D,
                             fontColor: 0xFFFFFFFF,
@@ -83,7 +79,7 @@ class PromoPage extends StatelessWidget {
                             padding: EdgeInsets.only(
                                 right: 10, bottom: 10, left: 16),
                             child: CardList(
-                              targetScreen: PromoDesc(),
+                              targetScreen: '/promo/desc',
                               title: 'OTW dari & ke bandara hemat banget!',
                               description: 'Kode GOBANDARA diskon s.d. 300RB',
                             ),
@@ -105,7 +101,7 @@ class PromoPage extends StatelessWidget {
                             padding: EdgeInsets.only(
                                 right: 10, bottom: 10, left: 16),
                             child: CardList(
-                              targetScreen: PromoDesc(),
+                              targetScreen: 'promo/desc',
                               title: 'Promo GoDec tiap weekend!',
                               description:
                                   'Pasti diskon s.d. 30RB ke mana pun. Klik\nuntuk dapetin promonya!',

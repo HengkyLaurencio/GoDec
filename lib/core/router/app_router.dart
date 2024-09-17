@@ -7,6 +7,8 @@ import 'package:godec/features/navigation/main_navigation.dart';
 import 'package:godec/features/order/presentation/page/front_order_page.dart';
 import 'package:godec/features/order/presentation/page/order_page.dart';
 import 'package:godec/features/promo/presentation/promo_code.dart';
+import 'package:godec/features/promo/presentation/promo_desc.dart';
+import 'package:godec/features/promo/presentation/promo_list.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -56,6 +58,12 @@ class AppRouter {
         path: '/order/map',
         builder: (context, state) => const OrderPage(),
       ),
+      GoRoute(
+        path: '/promo/list',
+        builder: (context, state) => const PromoList()),
+      GoRoute(
+        path: '/promo/desc',
+        builder: (context, state) => const PromoDesc()),
     ],
   );
 }
