@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CardList extends StatelessWidget {
   final String title;
   final String description;
-  final Widget targetScreen;
+  final String targetScreen;
   const CardList({super.key, 
     required this.title, 
     required this.description,
@@ -14,10 +15,7 @@ class CardList extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-         Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => targetScreen),
-        );
+         context.push(targetScreen);
       },
 
       child: Container(
