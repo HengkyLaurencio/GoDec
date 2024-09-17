@@ -88,7 +88,7 @@ class WalletPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const TopUpPage(),
+                          builder: (context) => TopUpPage(),
                         ),
                       );
                     },

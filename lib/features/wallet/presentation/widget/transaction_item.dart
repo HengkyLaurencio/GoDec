@@ -7,6 +7,7 @@ class TransactionItem extends StatelessWidget {
   final bool isCredit;
 
   const TransactionItem({
+    super.key,
     required this.title,
     required this.amount,
     required this.date,
@@ -19,7 +20,7 @@ class TransactionItem extends StatelessWidget {
       title: Text(
         title,
         style: const TextStyle(
-          fontFamily: 'Roboto', 
+          fontFamily: 'Roboto',
           fontSize: 18,
           fontWeight: FontWeight.w500,
         ),
@@ -35,7 +36,7 @@ class TransactionItem extends StatelessWidget {
       trailing: Text(
         amount,
         style: TextStyle(
-          fontFamily: 'Roboto', 
+          fontFamily: 'Roboto',
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: isCredit ? Colors.green : Colors.red,
