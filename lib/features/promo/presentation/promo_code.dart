@@ -53,7 +53,7 @@ class PromoForm extends StatelessWidget {
                 },
                 child: const Text(
                   "Submit",
-                  style: TextStyle(fontSize: 16, color: Colors.white), // Text size
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
             ),

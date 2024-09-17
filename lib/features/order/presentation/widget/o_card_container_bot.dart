@@ -11,7 +11,7 @@ class OCardContainerBot extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       width: screenWidth,
-      height: screenHeight + 11,
+      height: screenHeight + 15,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
@@ -60,7 +60,7 @@ class OCardContainerBot extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                       border: Border.all(
                         color: Colors.black.withOpacity(0.5),
-                        width: 1, 
+                        width: 1,
                       ),
                       boxShadow: [
                         BoxShadow(

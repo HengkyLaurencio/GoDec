@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:godec/core/router/app_router.dart';
 
 class PromoCardSmall extends StatelessWidget {
   final String description;
   final IconData icon;
   final int color;
   final int fontColor;
-  final Widget targetScreen; // Add the target screen
+  final String targetScreen; 
 
   const PromoCardSmall({
     super.key,
@@ -13,18 +15,14 @@ class PromoCardSmall extends StatelessWidget {
     required this.icon,
     required this.color,
     required this.fontColor,
-    required this.targetScreen, // Pass the target screen
+    required this.targetScreen, 
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Navigate to the target screen when tapped
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => targetScreen),
-        );
+        context.push(targetScreen);
       },
       child: Card(
         elevation: 5,

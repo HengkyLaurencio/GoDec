@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:godec/core/router/app_router.dart';
 
 class PromoCard extends StatelessWidget {
   final String title;
   final String description;
-  final Widget targetScreen;
+  final String targetScreen;
 
   const PromoCard({
     super.key,
@@ -16,10 +18,7 @@ class PromoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => targetScreen),
-        );
+        context.push(targetScreen);
       },
       child: Card(
         elevation: 5,
@@ -29,7 +28,8 @@ class PromoCard extends StatelessWidget {
             side: const BorderSide(
               color: Color(0xFF23274D),
               width: 5,
-            )),
+            )
+            ),
         child: Padding(
           padding: const EdgeInsets.all(30.0),
           child:

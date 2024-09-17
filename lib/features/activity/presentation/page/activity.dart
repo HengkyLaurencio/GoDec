@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:godec/core/widget/main_header.dart';
 
 class WhiteScreen extends StatelessWidget {
   const WhiteScreen({super.key});
@@ -8,23 +9,13 @@ class WhiteScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: MainHeader(title: 'Activity'),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 70),
-            const Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                child: Text(
-                  'Activity',
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
             const SizedBox(height: 110),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -40,7 +31,7 @@ class WhiteScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(left: 16),
                     child: Text(
-                      'Kumpulan Promo Yang Ada',
+                      'Promos',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -59,7 +50,7 @@ class WhiteScreen extends StatelessWidget {
             const SizedBox(height: 20),
             _buildHistoryCard(
               location:
-                  'Bandung, Indonesia Indonesia Indonesia Indonesia Indonesia Indonesia',
+                  'Bandung, Indonesia',
               price: 'Rp 75.000',
             ),
             const SizedBox(height: 20),

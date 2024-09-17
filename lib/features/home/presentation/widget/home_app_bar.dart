@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -18,10 +19,10 @@ class HomeAppBar extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'Hi! User',
                 style: TextStyle(
                   fontSize: 24,
@@ -29,10 +30,15 @@ class HomeAppBar extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              CircleAvatar(
-                radius: 24,
-                backgroundImage: NetworkImage(
-                  'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
+              GestureDetector(
+                onTap: () {
+                  context.push('/profile');
+                },
+                child: const CircleAvatar(
+                  radius: 24,
+                  backgroundImage: NetworkImage(
+                    'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
+                  ),
                 ),
               ),
             ],
