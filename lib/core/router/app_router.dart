@@ -64,6 +64,9 @@ class AppRouter {
       GoRoute(
         path: '/promo/desc',
         builder: (context, state) => const PromoDesc()),
+      GoRoute(
+        path: '/promo/form',
+        builder: (context, state) => const PromoForm()),
     ],
   );
 }

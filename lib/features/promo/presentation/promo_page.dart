@@ -20,14 +20,13 @@ class PromoPage extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            // Layer untuk gambar di belakang
             Positioned(
               bottom: 400,
               top: 200,
               right: 0,
               left: 0,
               child: Opacity(
-                opacity: 0.9, // Menyesuaikan transparansi gambar
+                opacity: 0.9, 
                 child: Image.network(
                   imageUrl,
                   fit: BoxFit.fill, // Mengisi seluruh area
@@ -51,14 +50,14 @@ class PromoPage extends StatelessWidget {
                             description: 'Vouchers & packs',
                           ),
                           PromoCardSmall(
-                            targetScreen: 'promo/form',
+                            targetScreen: '/promo/form',
                             description: 'Got a promo code? Enter here',
                             icon: Icons.percent,
                             color: 0xFFFFFFFF,
                             fontColor: 0xFF000000,
                           ),
                           PromoCardSmall(
-                            targetScreen: 'promo/form',
+                            targetScreen: '/promo/form',
                             description: 'Invite and Earn',
                             color: 0xFF23274D,
                             fontColor: 0xFFFFFFFF,
