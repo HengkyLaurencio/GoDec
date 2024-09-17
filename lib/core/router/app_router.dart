@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:godec/features/auth/presentation/page/forgot_password_page.dart';
 import 'package:godec/features/auth/presentation/page/landing_page.dart';
@@ -7,10 +8,26 @@ import 'package:godec/features/navigation/main_navigation.dart';
 import 'package:godec/features/order/presentation/page/front_order_page.dart';
 import 'package:godec/features/promo/presentation/promo_code.dart';
 
+import '../../features/auth/blocs/authentication_bloc/authentication_bloc.dart';
+
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: '/auth/landing',
+    initialLocation: '/',
     routes: [
+      GoRoute(
+        path: '/',
+        builder: (context, child) {
+          return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+            builder: (context, state) {
+              if (state is AuthenticationAuthenticated) {
+                return const MainNavigation();
+              } else {
+                return const LandingPage();
+              }
+            },
+          );
+        },
+      ),
       GoRoute(
         path: '/auth/landing',
         builder: (context, state) => const LandingPage(),
