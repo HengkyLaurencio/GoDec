@@ -1,32 +1,45 @@
 import 'package:flutter/material.dart';
 
-class AuthField extends StatefulWidget {
-  final String label;
-  final TextInputType type;
-  final bool password;
+class AuthField extends StatelessWidget {
+  final TextEditingController controller;
+  final String hintText;
+  final bool obscureText;
+  final TextInputType keyboardType;
+  final Widget? suffixIcon;
+  final VoidCallback? onTap;
+  final Widget? prefixIcon;
+  final String? Function(String?)? validator;
+  final FocusNode? focusNode;
+  final String? errorMsg;
+  final String? Function(String?)? onChanged;
 
   const AuthField(
       {super.key,
-      required this.label,
-      required this.type,
-      required this.password});
-
-  @override
-  State<AuthField> createState() => _AuthFieldState();
-}
-
-class _AuthFieldState extends State<AuthField> {
-  bool _obscureText = true;
+      required this.controller,
+      required this.hintText,
+      required this.obscureText,
+      required this.keyboardType,
+      this.suffixIcon,
+      this.onTap,
+      this.prefixIcon,
+      this.validator,
+      this.focusNode,
+      this.errorMsg,
+      this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      validator: validator,
+      obscureText: obscureText,
+      keyboardType: keyboardType,
+      focusNode: focusNode,
+      onTap: onTap,
+      textInputAction: TextInputAction.next,
+      onChanged: onChanged,
       decoration: InputDecoration(
-        labelText: widget.label,
-        floatingLabelStyle: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimary),
-        filled: true,
-        fillColor: Theme.of(context).colorScheme.surface,
+        prefixIcon: prefixIcon,
         border: OutlineInputBorder(
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           borderSide: BorderSide(color: Theme.of(context).colorScheme.surface),
@@ -39,22 +52,11 @@ class _AuthFieldState extends State<AuthField> {
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
         ),
-        suffixIcon: widget.password
-            ? IconButton(
-                icon: Icon(
-                  _obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _obscureText = !_obscureText;
-                  });
-                },
-              )
-            : null,
+        filled: true,
+        hintText: hintText,
+        errorText: errorMsg,
+        suffixIcon: suffixIcon,
       ),
-      keyboardType: widget.type,
-      obscureText: widget.password ? _obscureText : false,
     );
   }
 }

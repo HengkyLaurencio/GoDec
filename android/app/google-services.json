@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "193831617209",
+    "project_id": "godec-419d1",
+    "storage_bucket": "godec-419d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193831617209:android:1bd3453ef4d458554b9168",
+        "android_client_info": {
+          "package_name": "com.example.godec"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqgin4KMDOj9DqhPuhpN5-GQGPNdJpQiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
