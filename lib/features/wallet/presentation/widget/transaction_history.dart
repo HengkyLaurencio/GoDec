@@ -16,6 +16,7 @@ class TransactionHistory extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
+            color: Color(0xFF23274D),
           ),
         ),
         const SizedBox(height: 10),
