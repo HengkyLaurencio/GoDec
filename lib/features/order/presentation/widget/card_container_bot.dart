@@ -13,6 +13,7 @@ class CardContainerBot extends StatelessWidget {
         top: 20,
         left: 20,
         right: 20,
+        bottom: 30,
       ),
       width: screenWidth,
       height: screenHeight,
