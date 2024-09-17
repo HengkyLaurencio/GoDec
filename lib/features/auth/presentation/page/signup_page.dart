@@ -24,7 +24,9 @@ class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
 
   bool obscurePassword = true;
+  bool obscureConfirmPassword = true;
   bool signUpRequired = false;
+  bool isChecked = false;
   String? _errorMsg;
 
   @override
@@ -155,7 +157,7 @@ class _SignupPageState extends State<SignupPage> {
                         AuthField(
                             controller: repasswordController,
                             hintText: 'Re-Enter Password',
-                            obscureText: obscurePassword,
+                            obscureText: obscureConfirmPassword,
                             keyboardType: TextInputType.visiblePassword,
                             prefixIcon: const Icon(Icons.password),
                             errorMsg: _errorMsg,
@@ -172,11 +174,11 @@ class _SignupPageState extends State<SignupPage> {
                             suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
-                                  obscurePassword = !obscurePassword;
+                                  obscureConfirmPassword = !obscureConfirmPassword;
                                 });
                               },
                               icon: Icon(
-                                obscurePassword
+                                obscureConfirmPassword
                                     ? Icons.visibility_off
                                     : Icons.visibility,
                                 color: Theme.of(context).colorScheme.primary,
@@ -190,8 +192,14 @@ class _SignupPageState extends State<SignupPage> {
                               child: Row(
                                 children: [
                                   Checkbox(
-                                    value: false,
-                                    onChanged: (bool? value) {},
+                                    value: isChecked,
+                                    activeColor:
+                                        Theme.of(context).colorScheme.surface,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        isChecked = value ?? true;
+                                      });
+                                    },
                                   ),
                                   const SizedBox(width: 8.0),
                                   const Flexible(
@@ -210,6 +218,14 @@ class _SignupPageState extends State<SignupPage> {
                             ? ElevatedButton(
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
+                                    if (!isChecked) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                        content: Text(
+                                            'Please agree to the terms of service and privacy policy'),
+                                      ));
+                                      return;
+                                    }
                                     MyUser myUser = MyUser.empty;
                                     myUser.email = emailController.text;
                                     myUser.name = nameController.text;

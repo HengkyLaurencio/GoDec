@@ -118,7 +118,12 @@ class _LoginPageState extends State<LoginPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const AuthCheckbox(text: 'Remember Me'),
+                              TextButton(
+                                  onPressed: () {
+                                    context.push('/home');
+                                  },
+                                  child:
+                                      const AuthCheckbox(text: 'Remember Me')),
                               TextButton(
                                 onPressed: () {
                                   context.push('/auth/forgetpassword');
