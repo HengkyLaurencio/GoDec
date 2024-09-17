@@ -88,10 +88,14 @@ class WalletPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const TopUpPage(),
+                          builder: (context) => TopUpPage(),
                         ),
                       );
                     },
+                    backgroundColor: const Color.fromARGB(
+                        255, 223, 220, 220), 
+                    textColor: const Color(0xFF23274D), 
+                    iconColor: const Color(0xFF23274D), 
                   ),
                   const SizedBox(height: 15),
                   WalletFeature(
@@ -107,6 +111,10 @@ class WalletPage extends StatelessWidget {
                         ),
                       );
                     },
+                    backgroundColor:
+                        const Color(0xFF23274D), 
+                    textColor: Colors.white, 
+                    iconColor: Colors.white, 
                   ),
                   const SizedBox(height: 15),
                   WalletFeature(
@@ -122,6 +130,10 @@ class WalletPage extends StatelessWidget {
                         ),
                       );
                     },
+                    backgroundColor:
+                        const Color(0xFF23274D),
+                    textColor: Colors.white, 
+                    iconColor: Colors.white, 
                   ),
                   const SizedBox(height: 20),
                   const TransactionHistory(itemCount: 20),

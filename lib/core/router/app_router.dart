@@ -9,11 +9,16 @@ import 'package:godec/features/order/presentation/page/order_page.dart';
 import 'package:godec/features/promo/presentation/promo_code.dart';
 import 'package:godec/features/promo/presentation/promo_desc.dart';
 import 'package:godec/features/promo/presentation/promo_list.dart';
+import 'package:godec/features/profile/profile.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
     initialLocation: '/auth/landing',
-    routes: [
+    routes: [ 
+      GoRoute(
+        path: '/auth/profile',
+        builder: (context, state) => const Profile(),
+      ),
       GoRoute(
         path: '/auth/landing',
         builder: (context, state) => const LandingPage(),
@@ -60,13 +65,20 @@ class AppRouter {
       ),
       GoRoute(
         path: '/promo/list',
-        builder: (context, state) => const PromoList()),
+        builder: (context, state) => const PromoList(),
+      ),
       GoRoute(
         path: '/promo/desc',
-        builder: (context, state) => const PromoDesc()),
+        builder: (context, state) => const PromoDesc(),
+      ),
       GoRoute(
         path: '/promo/form',
-        builder: (context, state) => const PromoForm()),
+        builder: (context, state) => const PromoForm(),
+      ),
+      GoRoute(
+        path: '/profile',
+        builder: (context, state) => const Profile(),
+      ),
     ],
   );
 }

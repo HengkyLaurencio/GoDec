@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -31,7 +32,7 @@ class HomeAppBar extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  print('Profile picture tapped!');
+                  context.push('/profile');
                 },
                 child: const CircleAvatar(
                   radius: 24,
