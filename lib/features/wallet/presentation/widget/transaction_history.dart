@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:godec/features/wallet/presentation/page/widget/transaction_item';
+import 'package:godec/features/wallet/presentation/widget/transaction_item.dart';
 
 class TransactionHistory extends StatelessWidget {
   final int itemCount;
@@ -16,6 +16,7 @@ class TransactionHistory extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
+            color: Color(0xFF23274D),
           ),
         ),
         const SizedBox(height: 10),

@@ -6,7 +6,7 @@ class AddCardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Tambahkan Kartu')),
+      appBar: AppBar(title: const Text('Add Card')),
       body: const Center(child: Text('Add Card Page')),
     );
   }

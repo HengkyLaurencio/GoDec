@@ -6,7 +6,7 @@ class QrPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Scan Untuk Membayar')),
+      appBar: AppBar(title: const Text('Qr Page')),
       body: const Center(child: Text('Scan to Pay Page')),
     );
   }
