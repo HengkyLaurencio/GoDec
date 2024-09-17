@@ -7,11 +7,16 @@ import 'package:godec/features/navigation/main_navigation.dart';
 import 'package:godec/features/order/presentation/page/front_order_page.dart';
 import 'package:godec/features/order/presentation/page/order_page.dart';
 import 'package:godec/features/promo/presentation/promo_code.dart';
+import 'package:godec/features/profile/profile.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
     initialLocation: '/auth/landing',
-    routes: [
+    routes: [ 
+      GoRoute(
+        path: '/auth/profile',
+        builder: (context, state) => const Profile(),
+      ),
       GoRoute(
         path: '/auth/landing',
         builder: (context, state) => const LandingPage(),
@@ -55,6 +60,10 @@ class AppRouter {
       GoRoute(
         path: '/order/map',
         builder: (context, state) => const OrderPage(),
+      ),
+      GoRoute(
+        path: '/profile',
+        builder: (context, state) => const Profile(),
       ),
     ],
   );
