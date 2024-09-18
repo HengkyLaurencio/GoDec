@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:godec/features/auth/presentation/widget/auth_check_pass.dart';
 
 import '../../blocs/sign_up_bloc/sign_up_bloc.dart';
 import '../../data/models/user.dart';
@@ -28,6 +29,12 @@ class _SignupPageState extends State<SignupPage> {
   bool signUpRequired = false;
   bool isChecked = false;
   String? _errorMsg;
+
+  bool containsUpperCase = false;
+  bool containsLowerCase = false;
+  bool containsNumber = false;
+  bool containsSpecialChar = false;
+  bool contains8Length = false;
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +80,7 @@ class _SignupPageState extends State<SignupPage> {
                             style: TextStyle(
                                 fontSize: 24,
                                 color: Theme.of(context).colorScheme.surface)),
-                        const SizedBox(height: 80.0),
+                        const SizedBox(height: 50.0),
                         AuthField(
                           controller: nameController,
                           hintText: 'Name',
@@ -133,12 +140,55 @@ class _SignupPageState extends State<SignupPage> {
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return 'Please fill in this field';
-                              } else if (!RegExp(
-                                      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~`)\%\-(_+=;:,.<>/?"[{\]}\|^]).{8,}$')
-                                  .hasMatch(val)) {
-                                return 'Please enter a valid password';
+                              } else {
+                                if (val.contains(RegExp(r'[A-Z]'))) {
+                                  setState(() {
+                                    containsUpperCase = true;
+                                  });
+                                } else {
+                                  setState(() {
+                                    containsUpperCase = false;
+                                  });
+                                }
+                                if (val.contains(RegExp(r'[a-z]'))) {
+                                  setState(() {
+                                    containsLowerCase = true;
+                                  });
+                                } else {
+                                  setState(() {
+                                    containsLowerCase = false;
+                                  });
+                                }
+                                if (val.contains(RegExp(r'[0-9]'))) {
+                                  setState(() {
+                                    containsNumber = true;
+                                  });
+                                } else {
+                                  setState(() {
+                                    containsNumber = false;
+                                  });
+                                }
+                                if (val.contains(RegExp(
+                                    r'^(?=.*?[!@#$&*~`)\%\-(_+=;:,.<>/?"[{\]}\|^])'))) {
+                                  setState(() {
+                                    containsSpecialChar = true;
+                                  });
+                                } else {
+                                  setState(() {
+                                    containsSpecialChar = false;
+                                  });
+                                }
+                                if (val.length >= 8) {
+                                  setState(() {
+                                    contains8Length = true;
+                                  });
+                                } else {
+                                  setState(() {
+                                    contains8Length = false;
+                                  });
+                                }
+                                return null;
                               }
-                              return null;
                             },
                             suffixIcon: IconButton(
                               onPressed: () {
@@ -164,9 +214,7 @@ class _SignupPageState extends State<SignupPage> {
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return 'Please fill in this field';
-                              } else if (!RegExp(
-                                      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~`)\%\-(_+=;:,.<>/?"[{\]}\|^]).{8,}$')
-                                  .hasMatch(val)) {
+                              } else if (passwordController.text != val) {
                                 return 'Please re-enter a confirm password';
                               }
                               return null;
@@ -174,7 +222,8 @@ class _SignupPageState extends State<SignupPage> {
                             suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
-                                  obscureConfirmPassword = !obscureConfirmPassword;
+                                  obscureConfirmPassword =
+                                      !obscureConfirmPassword;
                                 });
                               },
                               icon: Icon(
@@ -251,7 +300,15 @@ class _SignupPageState extends State<SignupPage> {
                                 ),
                               )
                             : const CircularProgressIndicator(),
-                        const SizedBox(height: 40.0),
+                        const SizedBox(height: 15.0),
+                        const Text('Password Requirements: '),
+                        const SizedBox(height: 10.0),
+                        AuthCheckPass(
+                            containsUpperCase: containsUpperCase,
+                            containsLowerCase: containsLowerCase,
+                            containsNumber: containsNumber,
+                            containsSpecialChar: containsSpecialChar,
+                            contains8Length: contains8Length)
                       ],
                     ),
                   ),
