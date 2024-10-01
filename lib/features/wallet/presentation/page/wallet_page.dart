@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:godec/core/widget/main_header.dart';
-import 'package:godec/features/wallet/presentation/page/qr_page.dart';
 import 'package:godec/features/wallet/presentation/widget/balance_box.dart';
 import 'package:godec/features/wallet/presentation/widget/wallet_feature.dart';
 import 'package:godec/features/wallet/presentation/widget/transaction_history.dart';
-import 'package:godec/features/wallet/presentation/page/top_up_page.dart';
-import 'package:godec/features/wallet/presentation/page/add_card_page.dart';
+
 
 class WalletPage extends StatelessWidget {
   const WalletPage({super.key});
@@ -81,59 +79,29 @@ class WalletPage extends StatelessWidget {
                 children: [
                   WalletFeature(
                     title: 'Top-Up',
-                    height: 60,
-                    margin: const EdgeInsets.only(top: 0.0),
                     icon: Icons.add,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TopUpPage(),
-                        ),
-                      );
-                    },
-                    backgroundColor: const Color.fromARGB(
-                        255, 223, 220, 220), 
-                    textColor: const Color(0xFF23274D), 
-                    iconColor: const Color(0xFF23274D), 
+                    targetScreen: '/wallet/topup',
+                    backgroundColor: const Color.fromARGB(255, 223, 220, 220),
+                    textColor: const Color(0xFF23274D),
+                    iconColor: const Color(0xFF23274D),
                   ),
                   const SizedBox(height: 15),
                   WalletFeature(
                     title: 'Scan To Pay',
-                    height: 60,
-                    margin: const EdgeInsets.only(top: 0.0),
                     icon: Icons.qr_code_scanner,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const QrPage(),
-                        ),
-                      );
-                    },
-                    backgroundColor:
-                        const Color(0xFF23274D), 
-                    textColor: Colors.white, 
-                    iconColor: Colors.white, 
+                    targetScreen: '/wallet/qr',
+                    backgroundColor: const Color(0xFF23274D),
+                    textColor: Colors.white,
+                    iconColor: Colors.white,
                   ),
                   const SizedBox(height: 15),
                   WalletFeature(
                     title: 'Add Card',
-                    height: 60,
-                    margin: const EdgeInsets.only(top: 0.0),
                     icon: Icons.credit_card,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AddCardPage(),
-                        ),
-                      );
-                    },
-                    backgroundColor:
-                        const Color(0xFF23274D),
-                    textColor: Colors.white, 
-                    iconColor: Colors.white, 
+                    targetScreen: '/wallet/card',
+                    backgroundColor: const Color(0xFF23274D),
+                    textColor: Colors.white,
+                    iconColor: Colors.white,
                   ),
                   const SizedBox(height: 20),
                   const TransactionHistory(itemCount: 20),
