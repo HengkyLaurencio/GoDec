@@ -10,11 +10,14 @@ import 'package:godec/features/promo/presentation/promo_code.dart';
 import 'package:godec/features/promo/presentation/promo_desc.dart';
 import 'package:godec/features/promo/presentation/promo_list.dart';
 import 'package:godec/features/profile/profile.dart';
+import 'package:godec/features/wallet/presentation/page/add_card_page.dart';
+import 'package:godec/features/wallet/presentation/page/qr_page.dart';
+import 'package:godec/features/wallet/presentation/page/top_up_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
     initialLocation: '/auth/landing',
-    routes: [ 
+    routes: [
       GoRoute(
         path: '/auth/profile',
         builder: (context, state) => const Profile(),
@@ -78,6 +81,22 @@ class AppRouter {
       GoRoute(
         path: '/profile',
         builder: (context, state) => const Profile(),
+      ),
+      GoRoute(
+        path: '/wallet',
+        builder: (context, state) => const Profile(),
+      ),
+      GoRoute(
+        path: '/wallet/topup',
+        builder: (context, state) => const TopUpPage(),
+      ),
+      GoRoute(
+        path: '/wallet/qr',
+        builder: (context, state) => const QrPage(),
+      ),
+      GoRoute(
+        path: '/wallet/card',
+        builder: (context, state) => const AddCardPage(),
       ),
     ],
   );

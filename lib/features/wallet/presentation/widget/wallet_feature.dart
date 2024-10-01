@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart'; // Import GoRouter
 
 class WalletFeature extends StatefulWidget {
   final String title;
   final double height;
-  final EdgeInsetsGeometry margin;
   final IconData icon;
-  final VoidCallback onTap;
-  final Color backgroundColor; 
-  final Color textColor; 
-  final Color iconColor; 
-  
+  final Color backgroundColor;
+  final Color textColor;
+  final Color iconColor;
+  final String targetScreen;
 
   const WalletFeature({
     super.key,
     required this.title,
-    required this.height,
-    required this.margin,
+    this.height = 60,
     required this.icon,
-    required this.onTap,
-    this.backgroundColor = const Color.fromARGB(255, 229, 227, 227), 
+    this.backgroundColor = const Color.fromARGB(255, 229, 227, 227),
     this.textColor = Colors.black,
-    this.iconColor = Colors.black, 
+    this.iconColor = Colors.black,
+    required this.targetScreen,
   });
 
   @override
@@ -40,7 +38,8 @@ class _WalletFeatureState extends State<WalletFeature> {
     setState(() {
       _elevation = 0;
     });
-    widget.onTap();
+
+    context.push(widget.targetScreen); 
   }
 
   void _onTapCancel() {
@@ -51,17 +50,18 @@ class _WalletFeatureState extends State<WalletFeature> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: _onTapDown,
-      onTapUp: _onTapUp,
-      onTapCancel: _onTapCancel,
-      child: Material(
-        elevation: _elevation,
-        borderRadius: BorderRadius.circular(8),
-        color: widget.backgroundColor, 
+    return Material(
+      elevation: _elevation,
+      borderRadius: BorderRadius.circular(8),
+      color: widget.backgroundColor,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(
+            8), // Adding ripple effect within rounded corners
+        onTapDown: _onTapDown,
+        onTap: () => context.push(widget.targetScreen), // Updated navigation
+        onTapCancel: _onTapCancel,
         child: Container(
           height: widget.height,
-          margin: widget.margin,
           padding: const EdgeInsets.all(16.0),
           child: Row(
             children: [
