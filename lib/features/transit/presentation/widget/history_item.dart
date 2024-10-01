@@ -6,11 +6,11 @@ class HistoryItem extends StatelessWidget {
   final String transportMode;
 
   const HistoryItem({
-    Key? key,
+    super.key,
     required this.from,
     required this.to,
     required this.transportMode,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

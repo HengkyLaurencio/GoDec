@@ -8,15 +8,15 @@ class TransitPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        title: const Text("GoTransit"),
+        title: const Text("TransitDec"),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Search bar untuk memilih destinasi akhir
             TextField(
               decoration: InputDecoration(
                 hintText: 'Search destination...',
@@ -29,8 +29,6 @@ class TransitPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-
-            // Public transport option
             const Text(
               "Public Transport Option",
               style: TextStyle(
@@ -39,68 +37,71 @@ class TransitPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-
-            // Moda transportasi dalam bentuk grid card
-            GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TransportCard(
-                  title: "KRL",
-                  gradient: const LinearGradient(
-                    colors: [Colors.red, Colors.pink],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                Expanded(
+                  child: TransportCard(
+                    title: "KRL",
+                    gradient: const LinearGradient(
+                      colors: [Colors.red, Colors.pink],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    icon: Icons.train,
+                    onTap: () {
+                      // Aksi ketika KRL dipilih
+                    },
                   ),
-                  icon: Icons.train,
-                  onTap: () {
-                    // Aksi ketika KRL dipilih
-                  },
                 ),
-                TransportCard(
-                  title: "LRT",
-                  gradient: const LinearGradient(
-                    colors: [Colors.green, Colors.teal],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                const SizedBox(width: 8),
+                Expanded(
+                  child: TransportCard(
+                    title: "LRT",
+                    gradient: const LinearGradient(
+                      colors: [Colors.green, Colors.teal],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    icon: Icons.subway,
+                    onTap: () {
+                      // Aksi ketika LRT dipilih
+                    },
                   ),
-                  icon: Icons.subway,
-                  onTap: () {
-                    // Aksi ketika LRT dipilih
-                  },
                 ),
-                TransportCard(
-                  title: "MRT",
-                  gradient: const LinearGradient(
-                    colors: [Colors.blue, Colors.lightBlueAccent],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                const SizedBox(width: 8),
+                Expanded(
+                  child: TransportCard(
+                    title: "MRT",
+                    gradient: const LinearGradient(
+                      colors: [Colors.blue, Colors.lightBlueAccent],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    icon: Icons.directions_transit,
+                    onTap: () {
+                      // Aksi ketika MRT dipilih
+                    },
                   ),
-                  icon: Icons.directions_transit,
-                  onTap: () {
-                    // Aksi ketika MRT dipilih
-                  },
                 ),
-                TransportCard(
-                  title: "TransJakarta",
-                  gradient: const LinearGradient(
-                    colors: [Colors.orange, Colors.amber],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
+                const SizedBox(width: 8),
+                Expanded(
+                  child: TransportCard(
+                    title: "TransJakarta",
+                    gradient: const LinearGradient(
+                      colors: [Colors.orange, Colors.amber],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    icon: Icons.directions_bus,
+                    onTap: () {
+                      // Aksi ketika TransJakarta dipilih
+                    },
                   ),
-                  icon: Icons.directions_bus,
-                  onTap: () {
-                    // Aksi ketika TransJakarta dipilih
-                  },
                 ),
               ],
             ),
             const SizedBox(height: 20),
-
-            // History perjalanan
             const Text(
               "Recent History",
               style: TextStyle(
@@ -108,9 +109,7 @@ class TransitPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 16),
-
-            // Daftar history dalam bentuk list
+            const SizedBox(height: 5),
             const Column(
               children: [
                 HistoryItem(
