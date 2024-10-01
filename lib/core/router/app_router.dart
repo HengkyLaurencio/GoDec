@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:godec/features/auth/presentation/page/forgot_password_page.dart';
 import 'package:godec/features/auth/presentation/page/landing_page.dart';
@@ -10,17 +11,26 @@ import 'package:godec/features/promo/presentation/promo_code.dart';
 import 'package:godec/features/promo/presentation/promo_desc.dart';
 import 'package:godec/features/promo/presentation/promo_list.dart';
 import 'package:godec/features/profile/profile.dart';
-import 'package:godec/features/wallet/presentation/page/add_card_page.dart';
-import 'package:godec/features/wallet/presentation/page/qr_page.dart';
-import 'package:godec/features/wallet/presentation/page/top_up_page.dart';
+
+import '../../features/auth/blocs/authentication_bloc/authentication_bloc.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-    initialLocation: '/auth/landing',
+    initialLocation: '/',
     routes: [
       GoRoute(
-        path: '/auth/profile',
-        builder: (context, state) => const Profile(),
+        path: '/',
+        builder: (context, child) {
+          return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+            builder: (context, state) {
+              if (state is AuthenticationAuthenticated) {
+                return const MainNavigation();
+              } else {
+                return const LandingPage();
+              }
+            },
+          );
+        },
       ),
       GoRoute(
         path: '/auth/landing',
@@ -81,22 +91,6 @@ class AppRouter {
       GoRoute(
         path: '/profile',
         builder: (context, state) => const Profile(),
-      ),
-      GoRoute(
-        path: '/wallet',
-        builder: (context, state) => const Profile(),
-      ),
-      GoRoute(
-        path: '/wallet/topup',
-        builder: (context, state) => const TopUpPage(),
-      ),
-      GoRoute(
-        path: '/wallet/qr',
-        builder: (context, state) => const QrPage(),
-      ),
-      GoRoute(
-        path: '/wallet/card',
-        builder: (context, state) => const AddCardPage(),
       ),
     ],
   );
