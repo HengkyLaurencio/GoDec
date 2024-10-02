@@ -1,11 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import '../widget/arrow_back.dart';
 import '../widget/card_container_top.dart';
 import '../widget/card_container_stack.dart';
 import '../widget/card_container_bot.dart';
+import '../../../../core/widget/location_provider.dart';
 
-class FrontOrderPage extends StatelessWidget {
+class FrontOrderPage extends StatefulWidget {
   const FrontOrderPage({super.key});
+
+  @override
+  State<FrontOrderPage> createState() => _FrontOrderPageState();
+}
+
+class _FrontOrderPageState extends State<FrontOrderPage> {
+  final LocationProvider locationProvider = LocationProvider();
+  late MapController mapController;
+
+  @override
+  void initState() {
+    super.initState();
+    mapController = MapController();
+
+    locationProvider.getCurrentLocation().then((_) {
+      setState(() {
+        mapController.move(locationProvider.currentLatLng, mapController.zoom);
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +62,15 @@ class FrontOrderPage extends StatelessWidget {
                     right: 20,
                     child: CardContainerTop(),
                   ),
-                  const Positioned(
+                  Positioned(
                     top: 90,
                     left: 20,
                     right: 20,
-                    child: CardContainerStack(),
+                    child: CardContainerStack(
+                      mapController: mapController,
+                      currentLatLng: locationProvider
+                          .currentLatLng, 
+                    ),
                   ),
                 ],
               ),

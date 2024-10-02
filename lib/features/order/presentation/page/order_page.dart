@@ -1,18 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import '../widget/arrow_back.dart';
 import '../widget/check_container.dart';
 import '../widget/o_card_container_stack.dart';
 import '../widget/o_card_container_top.dart';
 import '../widget/o_card_container_bot.dart';
+import '../../../../core/widget/location_provider.dart';
 
-class OrderPage extends StatelessWidget {
+class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
+
+  @override
+  State<OrderPage> createState() => _OrderPageState();
+}
+
+class _OrderPageState extends State<OrderPage> {
+  final LocationProvider locationProvider = LocationProvider();
+  late MapController mapController;
+
+  @override
+  void initState() {
+    super.initState();
+    mapController = MapController();
+
+    locationProvider.getCurrentLocation().then((_) {
+      setState(() {
+        mapController.move(locationProvider.currentLatLng, mapController.zoom);
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    final mHeight = MediaQuery.of(context).size.height * 0.725;
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
@@ -26,12 +47,23 @@ class OrderPage extends StatelessWidget {
                   child: Stack(
                     children: [
                       Positioned(
-                        child: Container(
-                          width: screenWidth,
-                          height: mHeight,
-                          decoration: const BoxDecoration(
-                            color: Colors.black,
+                        child: FlutterMap(
+                          mapController: mapController,
+                          options: MapOptions(
+                            center: locationProvider.currentLatLng,
+                            zoom: 14,
+                            interactionOptions: const InteractionOptions(
+                              flags: ~InteractiveFlag.doubleTapZoom,
+                            ),
                           ),
+                          children: [
+                            TileLayer(
+                              urlTemplate:
+                                  'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                              userAgentPackageName:
+                                  'dev.fleatfet.flutter_map.example',
+                            ),
+                          ],
                         ),
                       ),
                       const Positioned(
