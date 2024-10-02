@@ -4,15 +4,16 @@ class BalanceBox extends StatelessWidget {
   final String title;
   final String amount;
   final String points;
-  final Gradient gradient;
+  final Color colors;
+  final Color textcolor;
 
-  const BalanceBox({
-    super.key,
-    required this.title,
-    required this.amount,
-    required this.points,
-    required this.gradient,
-  });
+  const BalanceBox(
+      {super.key,
+      required this.title,
+      required this.amount,
+      required this.points,
+      required this.colors,
+      required this.textcolor});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +22,11 @@ class BalanceBox extends StatelessWidget {
 
     return Container(
       width: boxWidth,
-      height: boxWidth * 0.95, 
+      height: boxWidth * 0.95,
       padding: EdgeInsets.all(screenWidth * 0.03),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(screenWidth * 0.04),
-        gradient: gradient,
+        color: colors,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
@@ -35,12 +36,12 @@ class BalanceBox extends StatelessWidget {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, 
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.8),
+              color: textcolor,
               fontSize: screenWidth * 0.045,
             ),
           ),
@@ -51,8 +52,8 @@ class BalanceBox extends StatelessWidget {
                 fit: BoxFit.fitWidth,
                 child: Text(
                   'Rp$amount',
-                  style: const TextStyle(
-                    color: Colors.white,
+                  style: TextStyle(
+                    color: textcolor,
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
@@ -64,14 +65,14 @@ class BalanceBox extends StatelessWidget {
             children: [
               Icon(
                 Icons.monetization_on,
-                color: Colors.white.withOpacity(0.8),
+                color: textcolor,
                 size: screenWidth * 0.04,
               ),
               SizedBox(width: screenWidth * 0.01),
               Text(
                 '$points Points',
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
+                  color: textcolor,
                   fontSize: screenWidth * 0.03,
                 ),
               ),

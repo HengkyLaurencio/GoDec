@@ -34,7 +34,7 @@ class WalletPage extends StatelessWidget {
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyUMebEcDUYneB8Y4J1-WWuXeb9qEUHMvQiA&s'),
+                            'https://www.jadeglobal.com/sites/default/files/styles/webp/public/2020-09/Case-Study-salesforce-min.jpg.webp?itok=aX6REpbB'),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -47,14 +47,8 @@ class WalletPage extends StatelessWidget {
                     title: 'Balance',
                     amount: '99.000',
                     points: '0',
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(255, 68, 170, 254),
-                        Color.fromARGB(255, 105, 179, 214)
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
+                    colors: Color(0xFF23274D),
+                    textcolor: Color.fromARGB(255, 255, 255, 255),
                   ),
                 ),
                 Positioned(
@@ -64,11 +58,8 @@ class WalletPage extends StatelessWidget {
                     title: 'DecPay',
                     amount: '99.999.999.999',
                     points: '9999999',
-                    gradient: LinearGradient(
-                      colors: [Colors.purple, Colors.pinkAccent],
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                    ),
+                    colors: Color.fromARGB(255, 255, 255, 255),
+                    textcolor: Color(0xFF23274D),
                   ),
                 ),
               ],
@@ -81,7 +72,7 @@ class WalletPage extends StatelessWidget {
                     title: 'Top-Up',
                     icon: Icons.add,
                     targetScreen: '/wallet/topup',
-                    backgroundColor: Color.fromARGB(255, 223, 220, 220),
+                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
                     textColor: Color(0xFF23274D),
                     iconColor: Color(0xFF23274D),
                   ),
