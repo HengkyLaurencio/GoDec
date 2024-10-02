@@ -12,6 +12,12 @@ class QrPage extends StatefulWidget {
 class _QrPageState extends State<QrPage> {
   String _scanBarcodeResult = 'Unknown';
 
+  @override
+  void initState() {
+    super.initState();
+    scanQR();
+  }
+
   Future<void> scanQR() async {
     String barcodeScanRes;
     try {
@@ -23,31 +29,63 @@ class _QrPageState extends State<QrPage> {
 
     if (!mounted) return;
 
-    setState(() {
-      _scanBarcodeResult = barcodeScanRes;
-    });
+    if (_scanBarcodeResult != barcodeScanRes) {
+      setState(() {
+        _scanBarcodeResult = barcodeScanRes;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('QR Page'),
+      appBar: AppBar(title: const Text('Scan To Pay')),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    return Container(
+      decoration: const BoxDecoration(),
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _buildScanButtonCard(),
+        ],
       ),
-      body: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(16),
+    );
+  }
+
+  Widget _buildScanButtonCard() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        color: Colors.white.withOpacity(0.85),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
               onPressed: scanQR,
-              child: const Text('Start QR Scan'),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'Scan Result: $_scanBarcodeResult',
-              style: const TextStyle(fontSize: 16),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF23274D),
+                foregroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                elevation: 10, 
+              ),
+              child: const Text(
+                'Tap To Scan',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),

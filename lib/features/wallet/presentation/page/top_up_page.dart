@@ -159,17 +159,14 @@ class _TopUpPageState extends State<TopUpPage> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                // Aksi ketika tombol Confirm ditekan
-              },
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.onSurface,
                 minimumSize: const Size(double.infinity, 50),
                 textStyle: const TextStyle(
-                  color: Colors.white, // Warna teks diatur di sini
+                  color: Colors.white,
                 ),
-                foregroundColor:
-                    Colors.white, // Pastikan warna teks menjadi putih
+                foregroundColor: Colors.white,
               ),
               child: const Text('Confirm'),
             )

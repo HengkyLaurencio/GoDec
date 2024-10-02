@@ -118,7 +118,7 @@ class Profile extends StatelessWidget {
             const SizedBox(height: 20),
             const HistoryCard(
               tulisan: 'Edit Profile',
-              targetscreen: '/home',
+              targetscreen: '/Editprofile',
               icons: Icons.edit,
             ),
 
@@ -141,6 +141,13 @@ class Profile extends StatelessWidget {
               tulisan: 'Activity',
               targetscreen: '/activity',
               icons: Icons.history,
+            ),
+
+            const SizedBox(height: 20),
+            const HistoryCard(
+              tulisan: 'LogOut',
+              targetscreen: '/auth/landing',
+              icons: Icons.logout,
             ),
 
 

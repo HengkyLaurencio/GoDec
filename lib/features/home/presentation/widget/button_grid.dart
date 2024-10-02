@@ -20,6 +20,9 @@ class ButtonGrid extends StatelessWidget {
               case 0:
                 context.push('/order');
                 break;
+              case 1:
+                context.push('/transit');
+                break;
               case 7:
                 context.push('/auth/landing');
                 break;

@@ -7,13 +7,16 @@ import 'package:godec/features/auth/presentation/page/signup_page.dart';
 import 'package:godec/features/navigation/main_navigation.dart';
 import 'package:godec/features/order/presentation/page/front_order_page.dart';
 import 'package:godec/features/order/presentation/page/order_page.dart';
+import 'package:godec/features/profile/editprofile.dart';
 import 'package:godec/features/promo/presentation/promo_code.dart';
 import 'package:godec/features/promo/presentation/promo_desc.dart';
 import 'package:godec/features/promo/presentation/promo_list.dart';
 import 'package:godec/features/profile/profile.dart';
+import 'package:godec/features/transit/presentation/page/transit_page.dart';
 import 'package:godec/features/wallet/presentation/page/add_card_page.dart';
 import 'package:godec/features/wallet/presentation/page/qr_page.dart';
 import 'package:godec/features/wallet/presentation/page/top_up_page.dart';
+import 'package:godec/features/wallet/presentation/widget/transaction_history_page.dart';
 
 import '../../features/auth/blocs/authentication_bloc/authentication_bloc.dart';
 
@@ -34,6 +37,10 @@ class AppRouter {
             },
           );
         },
+      ),
+      GoRoute(
+        path: '/transit',
+        builder: (context, state) => const TransitPage(),
       ),
       GoRoute(
         path: '/auth/landing',
@@ -80,6 +87,10 @@ class AppRouter {
         builder: (context, state) => const AddCardPage(),
       ),
       GoRoute(
+        path: '/wallet/transactions',
+        builder: (context, state) => const TransactionHistoryPage(),
+      ),
+      GoRoute(
         path: '/activity',
         builder: (context, state) => const MainNavigation(currentIndex: 3),
       ),
@@ -106,6 +117,10 @@ class AppRouter {
       GoRoute(
         path: '/profile',
         builder: (context, state) => const Profile(),
+      ),
+      GoRoute(
+        path: '/editprofile',
+        builder: (context, state) => const EditProfile(),
       ),
     ],
   );
