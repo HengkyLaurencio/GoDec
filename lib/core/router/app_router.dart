@@ -11,6 +11,7 @@ import 'package:godec/features/promo/presentation/promo_code.dart';
 import 'package:godec/features/promo/presentation/promo_desc.dart';
 import 'package:godec/features/promo/presentation/promo_list.dart';
 import 'package:godec/features/profile/profile.dart';
+import 'package:godec/features/transit/presentation/page/transit_page.dart';
 import 'package:godec/features/wallet/presentation/page/add_card_page.dart';
 import 'package:godec/features/wallet/presentation/page/qr_page.dart';
 import 'package:godec/features/wallet/presentation/page/top_up_page.dart';
@@ -35,6 +36,10 @@ class AppRouter {
             },
           );
         },
+      ),
+      GoRoute(
+        path: '/transit',
+        builder: (context, state) => const TransitPage(),
       ),
       GoRoute(
         path: '/auth/landing',

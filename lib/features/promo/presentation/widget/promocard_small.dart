@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:godec/core/router/app_router.dart';
 
 class PromoCardSmall extends StatelessWidget {
   final String description;
