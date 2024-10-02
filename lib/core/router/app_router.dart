@@ -14,6 +14,7 @@ import 'package:godec/features/profile/profile.dart';
 import 'package:godec/features/wallet/presentation/page/add_card_page.dart';
 import 'package:godec/features/wallet/presentation/page/qr_page.dart';
 import 'package:godec/features/wallet/presentation/page/top_up_page.dart';
+import 'package:godec/features/wallet/presentation/widget/transaction_history_page.dart';
 
 import '../../features/auth/blocs/authentication_bloc/authentication_bloc.dart';
 
@@ -78,6 +79,10 @@ class AppRouter {
       GoRoute(
         path: '/wallet/card',
         builder: (context, state) => const AddCardPage(),
+      ),
+      GoRoute(
+        path: '/wallet/transactions',
+        builder: (context, state) => const TransactionHistoryPage(),
       ),
       GoRoute(
         path: '/activity',
