@@ -7,6 +7,7 @@ import 'package:godec/features/auth/presentation/page/signup_page.dart';
 import 'package:godec/features/navigation/main_navigation.dart';
 import 'package:godec/features/order/presentation/page/front_order_page.dart';
 import 'package:godec/features/order/presentation/page/order_page.dart';
+import 'package:godec/features/profile/editprofile.dart';
 import 'package:godec/features/promo/presentation/promo_code.dart';
 import 'package:godec/features/promo/presentation/promo_desc.dart';
 import 'package:godec/features/promo/presentation/promo_list.dart';
@@ -106,6 +107,10 @@ class AppRouter {
       GoRoute(
         path: '/profile',
         builder: (context, state) => const Profile(),
+      ),
+      GoRoute(
+        path: '/editprofile',
+        builder: (context, state) => const EditProfile(),
       ),
     ],
   );
