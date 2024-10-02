@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:godec/core/widget/main_header.dart';
-import 'package:godec/features/wallet/presentation/page/qr_page.dart';
 import 'package:godec/features/wallet/presentation/widget/balance_box.dart';
 import 'package:godec/features/wallet/presentation/widget/wallet_feature.dart';
-import 'package:godec/features/wallet/presentation/widget/transaction_history.dart';
-import 'package:godec/features/wallet/presentation/page/top_up_page.dart';
-import 'package:godec/features/wallet/presentation/page/add_card_page.dart';
+import 'package:godec/features/wallet/presentation/widget/transaction_item.dart';
+import 'package:godec/features/wallet/presentation/widget/view_more_button.dart';
 
 class WalletPage extends StatelessWidget {
   const WalletPage({super.key});
@@ -75,68 +73,87 @@ class WalletPage extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(20),
+            const Padding(
+              padding: EdgeInsets.all(20),
               child: Column(
                 children: [
                   WalletFeature(
                     title: 'Top-Up',
-                    height: 60,
-                    margin: const EdgeInsets.only(top: 0.0),
                     icon: Icons.add,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TopUpPage(),
-                        ),
-                      );
-                    },
-                    backgroundColor: const Color.fromARGB(
-                        255, 223, 220, 220), 
-                    textColor: const Color(0xFF23274D), 
-                    iconColor: const Color(0xFF23274D), 
+                    targetScreen: '/wallet/topup',
+                    backgroundColor: Color.fromARGB(255, 223, 220, 220),
+                    textColor: Color(0xFF23274D),
+                    iconColor: Color(0xFF23274D),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15),
                   WalletFeature(
                     title: 'Scan To Pay',
-                    height: 60,
-                    margin: const EdgeInsets.only(top: 0.0),
                     icon: Icons.qr_code_scanner,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const QrPage(),
-                        ),
-                      );
-                    },
-                    backgroundColor:
-                        const Color(0xFF23274D), 
-                    textColor: Colors.white, 
-                    iconColor: Colors.white, 
+                    targetScreen: '/wallet/qr',
+                    backgroundColor: Color(0xFF23274D),
+                    textColor: Colors.white,
+                    iconColor: Colors.white,
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15),
                   WalletFeature(
                     title: 'Add Card',
-                    height: 60,
-                    margin: const EdgeInsets.only(top: 0.0),
                     icon: Icons.credit_card,
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AddCardPage(),
-                        ),
-                      );
-                    },
-                    backgroundColor:
-                        const Color(0xFF23274D),
-                    textColor: Colors.white, 
-                    iconColor: Colors.white, 
+                    targetScreen: '/wallet/card',
+                    backgroundColor: Color(0xFF23274D),
+                    textColor: Colors.white,
+                    iconColor: Colors.white,
                   ),
-                  const SizedBox(height: 20),
-                  const TransactionHistory(itemCount: 20),
+                  SizedBox(height: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Transaction History',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      TransactionItem(
+                        title: 'Starbucks Coffee',
+                        amount: '- \$5.00',
+                        date: 'Sep 24, 2024',
+                        isCredit: false,
+                      ),
+                      TransactionItem(
+                        title: 'Freelance Payment',
+                        amount: '+ \$200.00',
+                        date: 'Sep 22, 2024',
+                        isCredit: true,
+                      ),
+                      TransactionItem(
+                        title: 'Grocery Store',
+                        amount: '- \$45.00',
+                        date: 'Sep 20, 2024',
+                        isCredit: false,
+                      ),
+                      SizedBox(height: 10),
+                      TransactionItem(
+                        title: 'Starbucks Coffee',
+                        amount: '- \$5.00',
+                        date: 'Sep 24, 2024',
+                        isCredit: false,
+                      ),
+                      TransactionItem(
+                        title: 'Freelance Payment',
+                        amount: '+ \$200.00',
+                        date: 'Sep 22, 2024',
+                        isCredit: true,
+                      ),
+                      SizedBox(height: 10),
+                      Center(
+                        child: ViewMoreButton(
+                            targetScreen: "/wallet/transactions"),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
