@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart'; // Import GoRouter
+import 'package:go_router/go_router.dart';
 
 class WalletFeature extends StatefulWidget {
   final String title;
@@ -34,14 +34,6 @@ class _WalletFeatureState extends State<WalletFeature> {
     });
   }
 
-  void _onTapUp(TapUpDetails details) {
-    setState(() {
-      _elevation = 0;
-    });
-
-    context.push(widget.targetScreen); 
-  }
-
   void _onTapCancel() {
     setState(() {
       _elevation = 0;
@@ -51,14 +43,14 @@ class _WalletFeatureState extends State<WalletFeature> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: _elevation,
+      elevation: 20,
       borderRadius: BorderRadius.circular(8),
+      shadowColor: Colors.black.withOpacity(1),
       color: widget.backgroundColor,
       child: InkWell(
-        borderRadius: BorderRadius.circular(
-            8), // Adding ripple effect within rounded corners
+        borderRadius: BorderRadius.circular(8),
         onTapDown: _onTapDown,
-        onTap: () => context.push(widget.targetScreen), // Updated navigation
+        onTap: () => context.push(widget.targetScreen),
         onTapCancel: _onTapCancel,
         child: Container(
           height: widget.height,
