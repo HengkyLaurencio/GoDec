@@ -1,8 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
+import 'package:latlong2/latlong.dart';
+import '../../../../core/widget/location_provider.dart';
 
-class CardContainerStack extends StatelessWidget {
-  const CardContainerStack({super.key});
+class CardContainerStack extends StatefulWidget {
+  final MapController
+      mapController; // Mengambil mapController sebagai parameter
+  final LatLng currentLatLng; // Mengambil currentLatLng sebagai parameter
+
+  const CardContainerStack({
+    super.key,
+    required this.mapController,
+    required this.currentLatLng,
+  });
+
+  @override
+  State<CardContainerStack> createState() => _CardContainerStackState();
+}
+
+class _CardContainerStackState extends State<CardContainerStack> {
+  final LocationProvider locationProvider = LocationProvider();
+
+  @override
+  void initState() {
+    super.initState();
+
+    locationProvider.getCurrentLocation().then((_) {
+      setState(() {
+        // Memindahkan peta ke lokasi baru
+        widget.mapController
+            .move(locationProvider.currentLatLng, widget.mapController.zoom);
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +60,30 @@ class CardContainerStack extends StatelessWidget {
             style: TextStyle(fontSize: 12),
           ),
           const SizedBox(height: 8),
-          Container(
-            margin: const EdgeInsets.only(
-              right: 10,
-              left: 10,
-            ),
+          // Widget FlutterMap di sini
+          SizedBox(
             height: 120,
-            decoration: BoxDecoration(
-                color: Colors.black, borderRadius: BorderRadius.circular(15)),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15), // Add border radius here
+              child: FlutterMap(
+                mapController: widget.mapController,
+                options: MapOptions(
+                  center: widget
+                      .currentLatLng, // Menggunakan currentLatLng yang diambil dari widget
+                  zoom: 13,
+                  interactionOptions: const InteractionOptions(
+                    flags: ~InteractiveFlag.doubleTapZoom,
+                  ),
+                ),
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    userAgentPackageName: 'dev.fleatfet.flutter_map.example',
+                  ),
+                ],
+              ),
+            ),
           ),
           const SizedBox(height: 8),
           SizedBox(
@@ -95,9 +142,9 @@ class CardContainerStack extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );
