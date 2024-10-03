@@ -4,6 +4,12 @@ import 'package:godec/features/auth/presentation/page/forgot_password_page.dart'
 import 'package:godec/features/auth/presentation/page/landing_page.dart';
 import 'package:godec/features/auth/presentation/page/login_page.dart';
 import 'package:godec/features/auth/presentation/page/signup_page.dart';
+import 'package:godec/features/insurance/insurance.dart';
+import 'package:godec/features/insurance/insurance_detail.dart';
+import 'package:godec/features/insurance/insurance_detail_2.dart';
+import 'package:godec/features/insurance/insurance_detail_3.dart';
+import 'package:godec/features/insurance/insurance_detail_4.dart';
+import 'package:godec/features/insurance/insurance_detail_5.dart';
 import 'package:godec/features/navigation/main_navigation.dart';
 import 'package:godec/features/order/presentation/page/front_order_page.dart';
 import 'package:godec/features/order/presentation/page/order_page.dart';
@@ -102,6 +108,30 @@ class AppRouter {
       GoRoute(
         path: '/order',
         builder: (context, state) => const FrontOrderPage(),
+      ),
+      GoRoute(
+        path: '/insurance',
+        builder: (context, state) => const Insurance(),
+      ),
+      GoRoute(
+        path: '/insurance/detail',
+        builder: (context, state) => const InsuranceDetail(),
+      ),
+      GoRoute(
+        path: '/insurance/detail2',
+        builder: (context, state) => const InsuranceDetail2(),
+      ),
+      GoRoute(
+        path: '/insurance/detail3',
+        builder: (context, state) => const InsuranceDetail3(),
+      ),
+      GoRoute(
+        path: '/insurance/detail4',
+        builder: (context, state) => const InsuranceDetail4(),
+      ),
+      GoRoute(
+        path: '/insurance/detail5',
+        builder: (context, state) => const InsuranceDetail5(),
       ),
       GoRoute(
         path: '/order/map',

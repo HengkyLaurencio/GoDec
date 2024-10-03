@@ -23,6 +23,9 @@ class ButtonGrid extends StatelessWidget {
               case 1:
                 context.push('/transit');
                 break;
+              case 2:
+                context.push('/insurance');
+                break;
               case 7:
                 context.push('/auth/landing');
                 break;

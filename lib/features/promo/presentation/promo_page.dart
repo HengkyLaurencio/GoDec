@@ -100,7 +100,7 @@ class PromoPage extends StatelessWidget {
                             padding: EdgeInsets.only(
                                 right: 10, bottom: 10, left: 16),
                             child: CardList(
-                              targetScreen: 'promo/desc',
+                              targetScreen: '/promo/desc',
                               title: 'Promo GoDec tiap weekend!',
                               description:
                                   'Pasti diskon s.d. 30RB ke mana pun. Klik\nuntuk dapetin promonya!',
