@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class OCardContainerTop extends StatelessWidget {
-  const OCardContainerTop({super.key});
+class CardContainerTop extends StatelessWidget {
+  const CardContainerTop({super.key});
 
   @override
   Widget build(BuildContext context) {

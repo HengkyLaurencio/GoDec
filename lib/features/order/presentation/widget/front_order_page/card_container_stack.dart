@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
-import '../../../../core/widget/location_provider.dart';
+import '../../../../../core/widget/location_provider.dart';
 
 class CardContainerStack extends StatefulWidget {
   final MapController
@@ -81,6 +81,16 @@ class _CardContainerStackState extends State<CardContainerStack> {
                         'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                     userAgentPackageName: 'dev.fleatfet.flutter_map.example',
                   ),
+                  MarkerLayer(markers: [
+                    Marker(
+                        point: locationProvider.currentLatLng,
+                        alignment: Alignment.centerLeft,
+                        child: const Icon(
+                          Icons.location_pin,
+                          size: 30,
+                          color: Colors.red,
+                        )),
+                  ]),
                 ],
               ),
             ),

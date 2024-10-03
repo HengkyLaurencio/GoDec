@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import '../widget/arrow_back.dart';
-import '../widget/check_container.dart';
-import '../widget/o_card_container_stack.dart';
-import '../widget/o_card_container_top.dart';
-import '../widget/o_card_container_bot.dart';
+import '../widget/order_page/check_container.dart';
+import '../widget/order_page/card_container_stack.dart';
+import '../widget/order_page/card_container_top.dart';
+import '../widget/order_page/card_container_bot.dart';
 import '../../../../core/widget/location_provider.dart';
+import '../widget/order_page/distance_display.dart';
+import '../widget/order_page/custom_map.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
@@ -17,6 +22,11 @@ class OrderPage extends StatefulWidget {
 class _OrderPageState extends State<OrderPage> {
   final LocationProvider locationProvider = LocationProvider();
   late MapController mapController;
+  List<LatLng> routePoints = [];
+  final String orsApiKey =
+      '5b3ce3597851110001cf624811a8bd52e2f0484a90c1cf49e56570d7';
+  LatLng? destination;
+  double? distanceInM;
 
   @override
   void initState() {
@@ -30,9 +40,54 @@ class _OrderPageState extends State<OrderPage> {
     });
   }
 
+  Future<void> _getRoute(LatLng start, LatLng end) async {
+    final response = await http.get(
+      Uri.parse(
+        'https://api.openrouteservice.org/v2/directions/driving-car?api_key=$orsApiKey&start=${start.longitude},${start.latitude}&end=${end.longitude},${end.latitude}',
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      final List<dynamic> coords =
+          data['features'][0]['geometry']['coordinates'];
+      setState(() {
+        routePoints =
+            coords.map((coord) => LatLng(coord[1], coord[0])).toList();
+      });
+    } else {
+      print('Gagal mengambil rute');
+    }
+  }
+
+  void _addDestinationMarker(LatLng point) {
+    setState(() {
+      destination = point;
+      routePoints.clear();
+
+      final Distance distance = Distance();
+      distanceInM = distance.as(
+        LengthUnit.Meter,
+        locationProvider.currentLatLng,
+        destination!,
+      );
+    });
+
+    _getRoute(locationProvider.currentLatLng, destination!);
+  }
+
+  double getPricePerKmBike() {
+    const pricePerKmBike = 5000;
+    return (distanceInM ?? 0) / 1000 * pricePerKmBike;
+  }
+
+  double getPricePerKmCar() {
+    const pricePerKmCar = 8500;
+    return (distanceInM ?? 0) / 1000 * pricePerKmCar;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -46,25 +101,12 @@ class _OrderPageState extends State<OrderPage> {
                   height: screenHeight,
                   child: Stack(
                     children: [
-                      Positioned(
-                        child: FlutterMap(
-                          mapController: mapController,
-                          options: MapOptions(
-                            center: locationProvider.currentLatLng,
-                            zoom: 14,
-                            interactionOptions: const InteractionOptions(
-                              flags: ~InteractiveFlag.doubleTapZoom,
-                            ),
-                          ),
-                          children: [
-                            TileLayer(
-                              urlTemplate:
-                                  'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                              userAgentPackageName:
-                                  'dev.fleatfet.flutter_map.example',
-                            ),
-                          ],
-                        ),
+                      CustomMap(
+                        mapController: mapController,
+                        currentLatLng: locationProvider.currentLatLng,
+                        destination: destination,
+                        routePoints: routePoints,
+                        onMapTap: _addDestinationMarker,
                       ),
                       const Positioned(
                         top: 45,
@@ -77,6 +119,8 @@ class _OrderPageState extends State<OrderPage> {
                         right: 20,
                         child: CheckContainer(),
                       ),
+                      if (distanceInM != null)
+                        DistanceDisplay(distanceInMeters: distanceInM!),
                     ],
                   ),
                 ),
@@ -87,19 +131,21 @@ class _OrderPageState extends State<OrderPage> {
             bottom: 85,
             left: 20,
             right: 20,
-            child: OCardContainerTop(),
+            child: CardContainerTop(),
           ),
-          const Positioned(
+          Positioned(
             bottom: 80,
             left: 30,
             right: 30,
-            child: OCardContainerStack(),
+            child: CardContainerStack(
+                pricePerKmBike: getPricePerKmBike(),
+                pricePerKmCar: getPricePerKmCar()),
           ),
           const Positioned(
             bottom: 0,
             left: 0,
             right: 0,
-            child: OCardContainerBot(),
+            child: CardContainerBot(),
           ),
         ],
       ),
