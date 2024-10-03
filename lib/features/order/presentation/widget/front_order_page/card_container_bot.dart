@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widget/history_container.dart';
+import 'history_container.dart';
 
 class CardContainerBot extends StatelessWidget {
   const CardContainerBot({super.key});

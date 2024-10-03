@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class OCardContainerBot extends StatelessWidget {
-  const OCardContainerBot({super.key});
+class CardContainerBot extends StatelessWidget {
+  const CardContainerBot({super.key});
 
   @override
   Widget build(BuildContext context) {
