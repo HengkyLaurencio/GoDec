@@ -97,7 +97,6 @@ class WhiteScreen extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Kotak Dummy Icon
               Container(
                 width: 83,
                 height: 83,
@@ -107,26 +106,22 @@ class WhiteScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 16),
-
-              // Informasi Lokasi, Harga, dan Tombol Pesan Lagi
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Lokasi Tujuan (1/2 Baris)
                     Text(
                       location,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
-                      maxLines: 2, // Bisa 1 atau 2 baris
+                      maxLines: 2, 
                       overflow:
-                          TextOverflow.ellipsis, // Overflow pada teks panjang
+                          TextOverflow.ellipsis, 
                     ),
 
-                    // Harga dan Tombol Pesan Lagi
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -152,7 +147,7 @@ class WhiteScreen extends StatelessWidget {
                             ),
                           ),
                           child: const Text(
-                            'Pesan Lagi',
+                            'Order Again',
                             style: TextStyle(fontSize: 14),
                           ),
                         ),

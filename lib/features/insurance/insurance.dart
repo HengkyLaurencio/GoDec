@@ -44,7 +44,7 @@ class Insurance extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(right: 10, bottom: 40, left: 10),
                 child: CardList(
-                  targetScreen: 'promo/desc',
+                  targetScreen: '/insurance/detail',
                   title: 'Dukungan Perjalanan',
                   description:
                       'Rp 1.000 / perjalanan',
@@ -55,7 +55,7 @@ class Insurance extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(right: 10, bottom: 10, left: 16),
                 child: CardList(
-                  targetScreen: 'promo/desc',
+                  targetScreen: '/insurance/detail2',
                   title: 'Asuransi Perjalanan',
                   description:
                       'Mulai dari Rp 2.850 / hari',
@@ -67,7 +67,7 @@ class Insurance extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(right: 10, bottom: 10, left: 16),
                 child: CardList(
-                  targetScreen: 'promo/desc',
+                  targetScreen: '/insurance/detail3',
                   title: 'Motopro',
                   description:
                       'Lindungi motormu dari resiko kehilangan',
@@ -80,7 +80,7 @@ class Insurance extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(right: 10, bottom: 10, left: 16),
                 child: CardList(
-                  targetScreen: 'promo/desc',
+                  targetScreen: '/insurance/detail4',
                   title: 'Autocillin',
                   description:
                       'Tetap aman dan terlindungi setiap saatnya',
@@ -92,7 +92,7 @@ class Insurance extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(right: 10, bottom: 10, left: 16),
                 child: CardList(
-                  targetScreen: 'promo/desc',
+                  targetScreen: '/insurance/detail5',
                   title: 'Kecelakaan Diri',
                   description:
                       'Jaminan perlindungan untukmu setiap saat',
