@@ -1,12 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:godec/core/widget/main_header.dart';
 import 'package:godec/features/wallet/presentation/widget/balance_box.dart';
 import 'package:godec/features/wallet/presentation/widget/wallet_feature.dart';
 import 'package:godec/features/wallet/presentation/widget/transaction_item.dart';
 import 'package:godec/features/wallet/presentation/widget/view_more_button.dart';
+import 'package:godec/features/wallet/presentation/page/payment_page.dart';
 
-class WalletPage extends StatelessWidget {
+class WalletPage extends StatefulWidget {
   const WalletPage({super.key});
+
+  @override
+  State<WalletPage> createState() => _WalletPageState();
+}
+
+class _WalletPageState extends State<WalletPage> {
+  String _scanBarcodeResult = '';
+
+  void scanQR() async {
+    String barcodeScanRes;
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.QR);
+    } on PlatformException {
+      barcodeScanRes = 'Failed to get platform version';
+    }
+
+    if (!mounted) return;
+
+    if (barcodeScanRes != '-1') {
+      setState(() {
+        _scanBarcodeResult = barcodeScanRes;
+      });
+
+      PaymentPage.scannedResult = _scanBarcodeResult;
+
+      final result = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const PaymentPage(),
+        ),
+      );
+
+      if (result == true) {
+        setState(() {
+          _scanBarcodeResult = '';
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,11 +107,11 @@ class WalletPage extends StatelessWidget {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.all(20),
+            Padding(
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  WalletFeature(
+                  const WalletFeature(
                     title: 'Top-Up',
                     icon: Icons.add,
                     targetScreen: '/wallet/topup',
@@ -76,17 +119,17 @@ class WalletPage extends StatelessWidget {
                     textColor: Color(0xFF23274D),
                     iconColor: Color(0xFF23274D),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   WalletFeature(
                     title: 'Scan To Pay',
                     icon: Icons.qr_code_scanner,
-                    targetScreen: '/wallet/qr',
-                    backgroundColor: Color(0xFF23274D),
+                    backgroundColor: const Color(0xFF23274D),
                     textColor: Colors.white,
                     iconColor: Colors.white,
+                    onTap: scanQR,
                   ),
-                  SizedBox(height: 15),
-                  WalletFeature(
+                  const SizedBox(height: 15),
+                  const WalletFeature(
                     title: 'Add Card',
                     icon: Icons.credit_card,
                     targetScreen: '/wallet/card',
@@ -94,51 +137,48 @@ class WalletPage extends StatelessWidget {
                     textColor: Colors.white,
                     iconColor: Colors.white,
                   ),
-                  SizedBox(height: 20),
-                  Column(
+                  const SizedBox(height: 50),
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Transaction History',
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w800,
                           color: Colors.black,
                         ),
                       ),
-                      SizedBox(height: 10),
                       TransactionItem(
                         title: 'Starbucks Coffee',
-                        amount: '- \$5.00',
+                        amount: '- Rp 50.000',
                         date: 'Sep 24, 2024',
                         isCredit: false,
                       ),
                       TransactionItem(
                         title: 'Freelance Payment',
-                        amount: '+ \$200.00',
+                        amount: '+ Rp 200.000',
                         date: 'Sep 22, 2024',
                         isCredit: true,
                       ),
                       TransactionItem(
                         title: 'Grocery Store',
-                        amount: '- \$45.00',
+                        amount: '- Rp 45.000',
                         date: 'Sep 20, 2024',
                         isCredit: false,
                       ),
-                      SizedBox(height: 10),
                       TransactionItem(
                         title: 'Starbucks Coffee',
-                        amount: '- \$5.00',
+                        amount: '- Rp 50.000',
                         date: 'Sep 24, 2024',
                         isCredit: false,
                       ),
                       TransactionItem(
                         title: 'Freelance Payment',
-                        amount: '+ \$200.00',
+                        amount: '+ Rp 200.000',
                         date: 'Sep 22, 2024',
                         isCredit: true,
                       ),
-                      SizedBox(height: 10),
                       Center(
                         child: ViewMoreButton(
                             targetScreen: "/wallet/transactions"),

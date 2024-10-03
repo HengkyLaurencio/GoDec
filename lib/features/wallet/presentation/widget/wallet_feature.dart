@@ -8,7 +8,8 @@ class WalletFeature extends StatefulWidget {
   final Color backgroundColor;
   final Color textColor;
   final Color iconColor;
-  final String targetScreen;
+  final String? targetScreen;
+  final VoidCallback? onTap;
 
   const WalletFeature({
     super.key,
@@ -18,7 +19,8 @@ class WalletFeature extends StatefulWidget {
     this.backgroundColor = const Color.fromARGB(255, 229, 227, 227),
     this.textColor = Colors.black,
     this.iconColor = Colors.black,
-    required this.targetScreen,
+    this.targetScreen,
+    this.onTap,
   });
 
   @override
@@ -26,32 +28,22 @@ class WalletFeature extends StatefulWidget {
 }
 
 class _WalletFeatureState extends State<WalletFeature> {
-  double _elevation = 0;
-
-  void _onTapDown(TapDownDetails details) {
-    setState(() {
-      _elevation = 8;
-    });
-  }
-
-  void _onTapCancel() {
-    setState(() {
-      _elevation = 0;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 20,
+      elevation: 10,
       borderRadius: BorderRadius.circular(8),
-      shadowColor: Colors.black.withOpacity(1),
+      shadowColor: const Color(0xFF23274D).withOpacity(1),
       color: widget.backgroundColor,
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
-        onTapDown: _onTapDown,
-        onTap: () => context.push(widget.targetScreen),
-        onTapCancel: _onTapCancel,
+        onTap: () {
+          if (widget.onTap != null) {
+            widget.onTap!();
+          } else if (widget.targetScreen != null) {
+            context.push(widget.targetScreen!);
+          }
+        },
         child: Container(
           height: widget.height,
           padding: const EdgeInsets.all(16.0),

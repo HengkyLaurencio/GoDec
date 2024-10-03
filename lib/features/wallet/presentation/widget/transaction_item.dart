@@ -18,19 +18,20 @@ class TransactionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 10.0),
         title: Text(
           title,
           style: const TextStyle(
             fontFamily: 'Roboto',
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
+            fontSize: 17,
+            fontWeight: FontWeight.w700,
           ),
         ),
         subtitle: Text(
           date,
           style: TextStyle(
             fontFamily: 'Roboto',
-            fontSize: 15,
+            fontSize: 12,
             color: Colors.grey[600],
           ),
         ),
@@ -38,7 +39,7 @@ class TransactionItem extends StatelessWidget {
           amount,
           style: TextStyle(
             fontFamily: 'Roboto',
-            fontSize: 20,
+            fontSize: 17,
             fontWeight: FontWeight.bold,
             color: isCredit ? Colors.green : Colors.red,
           ),
