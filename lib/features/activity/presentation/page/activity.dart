@@ -6,8 +6,6 @@ class WhiteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(70.0),
@@ -16,41 +14,26 @@ class WhiteScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 110),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Container(
-                width: screenWidth,
-                height: 35,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF23274D),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 16),
-                    child: Text(
-                      'Promos',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+            Container(
+              width: double.infinity,
+              height: 200,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    'https://w0.peakpx.com/wallpaper/569/492/HD-wallpaper-dark-color-gradient.jpg',
                   ),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 20),
             _buildHistoryCard(
               location: 'Jakarta, Indonesia',
               price: 'Rp 100.000',
             ),
             const SizedBox(height: 20),
             _buildHistoryCard(
-              location:
-                  'Bandung, Indonesia',
+              location: 'Bandung, Indonesia',
               price: 'Rp 75.000',
             ),
             const SizedBox(height: 20),
@@ -117,11 +100,9 @@ class WhiteScreen extends StatelessWidget {
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
-                      maxLines: 2, 
-                      overflow:
-                          TextOverflow.ellipsis, 
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
