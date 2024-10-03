@@ -4,6 +4,7 @@ import 'package:godec/features/auth/presentation/page/forgot_password_page.dart'
 import 'package:godec/features/auth/presentation/page/landing_page.dart';
 import 'package:godec/features/auth/presentation/page/login_page.dart';
 import 'package:godec/features/auth/presentation/page/signup_page.dart';
+import 'package:godec/features/insurance/insurance.dart';
 import 'package:godec/features/navigation/main_navigation.dart';
 import 'package:godec/features/order/presentation/page/front_order_page.dart';
 import 'package:godec/features/order/presentation/page/order_page.dart';
@@ -97,6 +98,10 @@ class AppRouter {
       GoRoute(
         path: '/order',
         builder: (context, state) => const FrontOrderPage(),
+      ),
+      GoRoute(
+        path: '/insurance',
+        builder: (context, state) => const Insurance(),
       ),
       GoRoute(
         path: '/order/map',
