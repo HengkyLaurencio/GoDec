@@ -19,8 +19,6 @@ class _WalletPageState extends State<WalletPage> {
   String _scanBarcodeResult = '';
 
   void scanQR() async {
-    _scanBarcodeResult = '';
-
     String barcodeScanRes;
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
@@ -41,7 +39,7 @@ class _WalletPageState extends State<WalletPage> {
       final result = await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => PaymentPage(),
+          builder: (context) => const PaymentPage(),
         ),
       );
 
@@ -110,7 +108,7 @@ class _WalletPageState extends State<WalletPage> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(20), 
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   const WalletFeature(

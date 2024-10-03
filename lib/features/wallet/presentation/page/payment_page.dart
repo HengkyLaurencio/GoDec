@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PaymentPage extends StatefulWidget {
-  static String scannedResult = ''; 
+  static String scannedResult = '';
+  final String targetScreen;
 
-  const PaymentPage({super.key});
+  const PaymentPage({super.key, this.targetScreen = "/wallet/payment/success"});
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
@@ -162,6 +164,7 @@ class _PaymentPageState extends State<PaymentPage> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                context.push(widget.targetScreen);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.onSurface,
