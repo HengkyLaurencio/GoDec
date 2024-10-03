@@ -3,32 +3,32 @@ import 'package:go_router/go_router.dart';
 
 class ViewMoreButton extends StatelessWidget {
   final String targetScreen;
-  final double borderRadius;
 
   const ViewMoreButton({
     super.key,
     required this.targetScreen,
-    this.borderRadius = 10,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: ButtonStyle(
-        shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius),
-          ),
+    return Material(
+      shadowColor: const Color(0xFF23274D).withOpacity(0.5),
+      child: TextButton(
+        style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all(Colors.white),
         ),
-      ),
-      onPressed: () {
-        context.push(targetScreen);
-      },
-      child: const Text(
-        'View More',
-        style: TextStyle(
-          color: Color(0xFF23274D),
-          fontSize: 16,
+        onPressed: () {
+          context.push(targetScreen);
+        },
+        child: RichText(
+          text: const TextSpan(
+            text: 'View More',
+            style: TextStyle(
+              decoration: TextDecoration.underline,
+              color: Color(0xFF23274D),
+              fontSize: 16,
+            ),
+          ),
         ),
       ),
     );
