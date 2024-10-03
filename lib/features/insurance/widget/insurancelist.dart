@@ -52,7 +52,7 @@ class CardList extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.symmetric(
-                horizontal: 20.0),
+                horizontal: 15.0),
             alignment: Alignment.centerLeft, 
             child: Text(
               title,
@@ -64,7 +64,7 @@ class CardList extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
+                horizontal: 15.0,
                 vertical: 10.0),
             alignment: Alignment.centerLeft, 
             child: Text(  

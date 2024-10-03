@@ -25,15 +25,15 @@ class Insurance extends StatelessWidget {
                     children: [
                       Text('Insurance Plans',
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
+                          fontSize: 20, fontWeight: FontWeight.bold)),
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text('My Insurance Plans',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
+                        style: TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ],
@@ -42,7 +42,7 @@ class Insurance extends StatelessWidget {
               SizedBox(height: 16),
 
               Padding(
-                padding: EdgeInsets.only(right: 10, bottom: 40, left: 10),
+                padding: EdgeInsets.only(right: 10, bottom: 40, top: 20, left: 10),
                 child: CardList(
                   targetScreen: '/insurance/detail',
                   title: 'Dukungan Perjalanan',
@@ -53,7 +53,7 @@ class Insurance extends StatelessWidget {
 
 
               Padding(
-                padding: EdgeInsets.only(right: 10, bottom: 10, left: 16),
+                padding: EdgeInsets.only(right: 10, bottom: 20, left: 10),
                 child: CardList(
                   targetScreen: '/insurance/detail2',
                   title: 'Asuransi Perjalanan',
@@ -65,7 +65,7 @@ class Insurance extends StatelessWidget {
               SizedBox(height: 20),
 
               Padding(
-                padding: EdgeInsets.only(right: 10, bottom: 10, left: 16),
+                padding: EdgeInsets.only(right: 10, bottom: 20, left: 10),
                 child: CardList(
                   targetScreen: '/insurance/detail3',
                   title: 'Motopro',
@@ -78,7 +78,7 @@ class Insurance extends StatelessWidget {
               SizedBox(height: 20),
 
               Padding(
-                padding: EdgeInsets.only(right: 10, bottom: 10, left: 16),
+                padding: EdgeInsets.only(right: 10, bottom: 20, left: 10),
                 child: CardList(
                   targetScreen: '/insurance/detail4',
                   title: 'Autocillin',
@@ -90,7 +90,7 @@ class Insurance extends StatelessWidget {
               SizedBox(height: 20),
 
               Padding(
-                padding: EdgeInsets.only(right: 10, bottom: 10, left: 16),
+                padding: EdgeInsets.only(right: 10, bottom: 20, left: 10),
                 child: CardList(
                   targetScreen: '/insurance/detail5',
                   title: 'Kecelakaan Diri',
