@@ -10,117 +10,102 @@ class TransactionHistoryPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Transaction History'),
       ),
-      body: ListView(
-        children: const [
-          TransactionItem(
-            title: 'Starbucks Coffee',
-            amount: '- \$5.00',
-            date: 'Sep 24, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Freelance Payment',
-            amount: '+ \$200.00',
-            date: 'Sep 22, 2024',
-            isCredit: true,
-          ),
-          TransactionItem(
-            title: 'Grocery Store',
-            amount: '- \$45.00',
-            date: 'Sep 20, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Starbucks Coffee',
-            amount: '- \$5.00',
-            date: 'Sep 24, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Freelance Payment',
-            amount: '+ \$200.00',
-            date: 'Sep 22, 2024',
-            isCredit: true,
-          ),
-          TransactionItem(
-            title: 'Grocery Store',
-            amount: '- \$45.00',
-            date: 'Sep 20, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Starbucks Coffee',
-            amount: '- \$5.00',
-            date: 'Sep 24, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Freelance Payment',
-            amount: '+ \$200.00',
-            date: 'Sep 22, 2024',
-            isCredit: true,
-          ),
-          TransactionItem(
-            title: 'Grocery Store',
-            amount: '- \$45.00',
-            date: 'Sep 20, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Starbucks Coffee',
-            amount: '- \$5.00',
-            date: 'Sep 24, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Freelance Payment',
-            amount: '+ \$200.00',
-            date: 'Sep 22, 2024',
-            isCredit: true,
-          ),
-          TransactionItem(
-            title: 'Grocery Store',
-            amount: '- \$45.00',
-            date: 'Sep 20, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Starbucks Coffee',
-            amount: '- \$5.00',
-            date: 'Sep 24, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Freelance Payment',
-            amount: '+ \$200.00',
-            date: 'Sep 22, 2024',
-            isCredit: true,
-          ),
-          TransactionItem(
-            title: 'Grocery Store',
-            amount: '- \$45.00',
-            date: 'Sep 20, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Starbucks Coffee',
-            amount: '- \$5.00',
-            date: 'Sep 24, 2024',
-            isCredit: false,
-          ),
-          TransactionItem(
-            title: 'Freelance Payment',
-            amount: '+ \$200.00',
-            date: 'Sep 22, 2024',
-            isCredit: true,
-          ),
-          TransactionItem(
-            title: 'Grocery Store',
-            amount: '- \$45.00',
-            date: 'Sep 20, 2024',
-            isCredit: false,
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: ListView(
+          children: const [
+            TransactionItem(
+              title: 'Starbucks Coffee',
+              amount: '- Rp 50.000',
+              date: 'Sep 24, 2024',
+              isCredit: false,
+            ),
+            TransactionItem(
+              title: 'Freelance Payment',
+              amount: '+ Rp 200.000',
+              date: 'Sep 22, 2024',
+              isCredit: true,
+            ),
+            TransactionItem(
+              title: 'Grocery Store',
+              amount: '- Rp 45.000',
+              date: 'Sep 20, 2024',
+              isCredit: false,
+            ),
+            TransactionItem(
+              title: 'Starbucks Coffee',
+              amount: '- Rp 50.000',
+              date: 'Sep 24, 2024',
+              isCredit: false,
+            ),
+            TransactionItem(
+              title: 'Freelance Payment',
+              amount: '+ Rp 200.000',
+              date: 'Sep 22, 2024',
+              isCredit: true,
+            ),
+            TransactionItem(
+              title: 'Grocery Store',
+              amount: '- Rp 45.000',
+              date: 'Sep 20, 2024',
+              isCredit: false,
+            ),
+            TransactionItem(
+              title: 'Starbucks Coffee',
+              amount: '- Rp 50.000',
+              date: 'Sep 24, 2024',
+              isCredit: false,
+            ),
+            TransactionItem(
+              title: 'Freelance Payment',
+              amount: '+ Rp 200.000',
+              date: 'Sep 22, 2024',
+              isCredit: true,
+            ),
+            TransactionItem(
+              title: 'Grocery Store',
+              amount: '- Rp 45.000',
+              date: 'Sep 20, 2024',
+              isCredit: false,
+            ),
+            TransactionItem(
+              title: 'Starbucks Coffee',
+              amount: '- Rp 50.000',
+              date: 'Sep 24, 2024',
+              isCredit: false,
+            ),
+            TransactionItem(
+              title: 'Freelance Payment',
+              amount: '+ Rp 200.000',
+              date: 'Sep 22, 2024',
+              isCredit: true,
+            ),
+            TransactionItem(
+              title: 'Grocery Store',
+              amount: '- Rp 45.000',
+              date: 'Sep 20, 2024',
+              isCredit: false,
+            ),
+            TransactionItem(
+              title: 'Starbucks Coffee',
+              amount: '- Rp 50.000',
+              date: 'Sep 24, 2024',
+              isCredit: false,
+            ),
+            TransactionItem(
+              title: 'Freelance Payment',
+              amount: '+ Rp 200.000',
+              date: 'Sep 22, 2024',
+              isCredit: true,
+            ),
+            TransactionItem(
+              title: 'Grocery Store',
+              amount: '- Rp 45.000',
+              date: 'Sep 20, 2024',
+              isCredit: false,
+            )
+          ],
+        ),
       ),
     );
   }
