@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:godec/features/order/presentation/widget/pick_container.dart';
+import '../../widget/order_page/pick_container_bike.dart';
+import '../../widget/order_page/pick_container_car.dart';
 
-class OCardContainerStack extends StatelessWidget {
-  const OCardContainerStack({super.key});
+class CardContainerStack extends StatelessWidget {
+  final double pricePerKmBike; 
+  final double pricePerKmCar; 
+
+  const CardContainerStack({super.key, required this.pricePerKmBike,required this.pricePerKmCar});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +18,9 @@ class OCardContainerStack extends StatelessWidget {
         color: Theme.of(context).colorScheme.onSurface,
         borderRadius: BorderRadius.circular(25),
       ),
-      child: const Stack(
+      child: Stack(
         children: [
-          Positioned(
+          const Positioned(
             top: 0,
             left: 0,
             right: 0,
@@ -30,7 +34,7 @@ class OCardContainerStack extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
+          const Positioned(
             top: 10,
             left: 137,
             right: 137,
@@ -42,11 +46,11 @@ class OCardContainerStack extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              PickContainer(),
-              SizedBox(height: 12),
-              PickContainer(),
+              PickContainerBike(pricePerKmBike: pricePerKmBike),
+              const SizedBox(height: 12),
+              PickContainerCar(pricePerKmCar: pricePerKmCar),
             ],
-          )
+          ),
         ],
       ),
     );
