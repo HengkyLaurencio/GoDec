@@ -16,18 +16,20 @@ class _PaymentPageState extends State<PaymentPage> {
   final TextEditingController _controller = TextEditingController();
   String selectedMethod = 'Choose your payment method';
   bool isButtonActive = false;
+  String merchantName = 'Alleyway Muse';
 
   @override
   void initState() {
     super.initState();
-    _controller.text = formatCurrency('0');
+    _controller.text = 'Rp 0';
   }
 
   String formatCurrency(String value) {
     if (value.isEmpty) return 'Rp 0';
     final formatter =
         NumberFormat.currency(locale: 'id', symbol: 'Rp ', decimalDigits: 0);
-    final int amount = int.tryParse(value.replaceAll('.', '')) ?? 0;
+    final int amount =
+        int.tryParse(value.replaceAll('.', '').replaceAll('Rp ', '')) ?? 0;
     return formatter.format(amount);
   }
 
@@ -89,6 +91,23 @@ class _PaymentPageState extends State<PaymentPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              children: [
+                const Icon(Icons.store, color: Color(0xFF23274D), size: 25),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    merchantName,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF23274D),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
             GestureDetector(
               onTap: () {
                 _showPaymentMethodSelection(context);
@@ -207,7 +226,7 @@ class _PaymentPageState extends State<PaymentPage> {
           child: const Text(
             'TIME TO PAY',
             style: TextStyle(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: Colors.white,
             ),
           ),
         ),

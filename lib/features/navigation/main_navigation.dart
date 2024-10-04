@@ -52,8 +52,8 @@ class _MainNavigationState extends State<MainNavigation> {
               label: 'Promo',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.payment),
-              label: 'Payment',
+              icon: Icon(Icons.wallet_sharp),
+              label: 'Wallet',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.history),
