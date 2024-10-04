@@ -76,8 +76,7 @@ class _WalletPageState extends State<WalletPage> {
                   child: Container(
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(
-                            'https://www.jadeglobal.com/sites/default/files/styles/webp/public/2020-09/Case-Study-salesforce-min.jpg.webp?itok=aX6REpbB'),
+                        image: NetworkImage(' '),
                         fit: BoxFit.cover,
                       ),
                     ),
