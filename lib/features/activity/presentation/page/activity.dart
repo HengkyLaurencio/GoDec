@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:godec/core/widget/main_header.dart';
+import 'package:go_router/go_router.dart';
 
 class WhiteScreen extends StatelessWidget {
   const WhiteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(70.0),
@@ -14,26 +17,46 @@ class WhiteScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              height: 200,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                    'https://w0.peakpx.com/wallpaper/569/492/HD-wallpaper-dark-color-gradient.jpg',
+            const SizedBox(height: 110),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: InkWell( 
+                onTap: () {
+                  context.push('/promo'); 
+                },
+              child: Container(
+                width: screenWidth,
+                height: 35,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF23274D),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 16),
+                    child: Text(
+                      'Promos',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+          ),
+            const SizedBox(height: 30),
             _buildHistoryCard(
               location: 'Jakarta, Indonesia',
               price: 'Rp 100.000',
             ),
             const SizedBox(height: 20),
             _buildHistoryCard(
-              location: 'Bandung, Indonesia',
+              location:
+                  'Bandung, Indonesia',
               price: 'Rp 75.000',
             ),
             const SizedBox(height: 20),
@@ -80,6 +103,7 @@ class WhiteScreen extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Kotak Dummy Icon
               Container(
                 width: 83,
                 height: 83,
@@ -89,6 +113,7 @@ class WhiteScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 16),
+
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,8 +126,10 @@ class WhiteScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                       maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                      overflow:
+                          TextOverflow.ellipsis, 
                     ),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -128,7 +155,7 @@ class WhiteScreen extends StatelessWidget {
                             ),
                           ),
                           child: const Text(
-                            'Order Again',
+                            'Pesan Lagi',
                             style: TextStyle(fontSize: 14),
                           ),
                         ),
