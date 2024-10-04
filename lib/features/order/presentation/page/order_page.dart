@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import '../widget/arrow_back.dart';
@@ -13,7 +15,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class OrderPage extends StatefulWidget {
-  const OrderPage({super.key});
+  final double? lat;
+  final double? lng;
+
+  const OrderPage({super.key, this.lat, this.lng});
 
   @override
   State<OrderPage> createState() => _OrderPageState();
@@ -36,6 +41,9 @@ class _OrderPageState extends State<OrderPage> {
     locationProvider.getCurrentLocation().then((_) {
       setState(() {
         mapController.move(locationProvider.currentLatLng, mapController.zoom);
+        if (widget.lat != null && widget.lng != null) {
+          _addDestinationMarker(LatLng(widget.lat!, widget.lng!));
+        }
       });
     });
   }
@@ -55,8 +63,6 @@ class _OrderPageState extends State<OrderPage> {
         routePoints =
             coords.map((coord) => LatLng(coord[1], coord[0])).toList();
       });
-    } else {
-      print('Gagal mengambil rute');
     }
   }
 
@@ -65,7 +71,7 @@ class _OrderPageState extends State<OrderPage> {
       destination = point;
       routePoints.clear();
 
-      final Distance distance = Distance();
+      const Distance distance = Distance();
       distanceInM = distance.as(
         LengthUnit.Meter,
         locationProvider.currentLatLng,

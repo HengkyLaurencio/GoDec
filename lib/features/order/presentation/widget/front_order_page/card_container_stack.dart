@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
@@ -5,9 +7,8 @@ import 'package:latlong2/latlong.dart';
 import '../../../../../core/widget/location_provider.dart';
 
 class CardContainerStack extends StatefulWidget {
-  final MapController
-      mapController; // Mengambil mapController sebagai parameter
-  final LatLng currentLatLng; // Mengambil currentLatLng sebagai parameter
+  final MapController mapController;
+  final LatLng currentLatLng;
 
   const CardContainerStack({
     super.key,
@@ -28,7 +29,6 @@ class _CardContainerStackState extends State<CardContainerStack> {
 
     locationProvider.getCurrentLocation().then((_) {
       setState(() {
-        // Memindahkan peta ke lokasi baru
         widget.mapController
             .move(locationProvider.currentLatLng, widget.mapController.zoom);
       });
@@ -60,16 +60,14 @@ class _CardContainerStackState extends State<CardContainerStack> {
             style: TextStyle(fontSize: 12),
           ),
           const SizedBox(height: 8),
-          // Widget FlutterMap di sini
           SizedBox(
             height: 120,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(15), // Add border radius here
+              borderRadius: BorderRadius.circular(15),
               child: FlutterMap(
                 mapController: widget.mapController,
                 options: MapOptions(
-                  center: widget
-                      .currentLatLng, // Menggunakan currentLatLng yang diambil dari widget
+                  center: widget.currentLatLng,
                   zoom: 13,
                   interactionOptions: const InteractionOptions(
                     flags: ~InteractiveFlag.doubleTapZoom,
@@ -100,7 +98,7 @@ class _CardContainerStackState extends State<CardContainerStack> {
             height: 35,
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Destination Location',
+                hintText: 'Search Destination Location',
                 prefixIcon: const Icon(Icons.location_on),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
