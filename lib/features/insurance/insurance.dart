@@ -9,8 +9,10 @@ class Insurance extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Insurance'),
-        backgroundColor: Colors.white,
+        title: const Text('Insurance', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF23274D),
+        iconTheme: const IconThemeData(
+        color: Colors.white)
       ),
       body: SingleChildScrollView(
         child: Container(
