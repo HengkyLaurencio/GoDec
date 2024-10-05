@@ -39,7 +39,7 @@ class PickContainerCar extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             const Text(
-              'CarDec',
+              'DecCar',
               style: TextStyle(fontSize: 16),
             ),
             const Spacer(),
