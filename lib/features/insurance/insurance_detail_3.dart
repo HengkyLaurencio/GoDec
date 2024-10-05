@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class InsuranceDetail3 extends StatelessWidget {
-  const InsuranceDetail3({super.key});
+  const InsuranceDetail3 ({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -25,13 +27,17 @@ class InsuranceDetail3 extends StatelessWidget {
                     left: 0,
                     right: 0,
                     child: Container(
-                      height: 250, 
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              'https://cdn.infobrand.id/images/img/posts/2020/11/05/baf-luncurkan-3-perlindungan-dalam-1-pembiayaan-motor-yamaha.jpeg'),
-                          fit: BoxFit
-                              .cover,
+                      width: screenWidth,
+                      color: Colors.grey,
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 20, bottom: 20, top: 190),
+                        child: Text(
+                          "Dukungan Perjalanan",
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -110,7 +116,8 @@ class InsuranceDetail3 extends StatelessWidget {
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                  },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     backgroundColor: const Color(0xFF23274D),

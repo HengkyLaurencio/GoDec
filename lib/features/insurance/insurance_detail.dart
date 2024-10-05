@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class InsuranceDetail extends StatelessWidget {
   const InsuranceDetail({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -26,12 +27,17 @@ class InsuranceDetail extends StatelessWidget {
                     left: 0,
                     right: 0,
                     child: Container(
-                      height: 250,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              'https://assets.grab.com/wp-content/uploads/sites/9/2022/03/21161911/Landing-page-1200x630-1.jpg'),
-                          fit: BoxFit.cover,
+                      width: screenWidth,
+                      color: Colors.grey,
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.only(left: 20, bottom: 20, top: 190),
+                        child: Text(
+                          "Dukungan Perjalanan",
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
@@ -108,24 +114,23 @@ class InsuranceDetail extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      GoRouter.of(context).push('/order/map'); 
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(
-                          0xFF23274D), // Menggunakan warna biru sesuai permintaan
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    backgroundColor: const Color(0xFF23274D),
+                  ),
+                  child: const Text(
+                    'Use This Insurance',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
                     ),
-                    child: const Text(
-                      'Use This Insurance',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                    ),
-                  )),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
