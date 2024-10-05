@@ -11,10 +11,10 @@ class CardContainerBot extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height * 0.4;
 
-    const LatLng historyLatLng1 = LatLng(-6.1751, 106.8650);
-    const LatLng historyLatLng2 = LatLng(-7.7956, 110.3695);
-    const LatLng historyLatLng3 = LatLng(-8.3405, 115.0920);
-    const LatLng historyLatLng4 = LatLng(-6.9175, 107.6191);
+    const LatLng historyLatLng1 = LatLng(-6.175392, 106.827153);
+    const LatLng historyLatLng2 = LatLng(-6.301446, 106.895157);
+    const LatLng historyLatLng3 = LatLng(-6.218335, 106.802216);
+    const LatLng historyLatLng4 = LatLng(-6.125556, 106.655830);
 
     return Container(
       margin: const EdgeInsets.only(
@@ -41,7 +41,7 @@ class CardContainerBot extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           HistoryContainer(
-            text: 'History Item 1',
+            text: 'Monumen Nasional Indonesia',
             latLng: historyLatLng1,
             onTap: () {
               context.push(
@@ -50,7 +50,7 @@ class CardContainerBot extends StatelessWidget {
             },
           ),
           HistoryContainer(
-            text: 'History Item 2',
+            text: 'Taman Mini Indonesia Indah',
             latLng: historyLatLng2,
             onTap: () {
               context.push(
@@ -59,7 +59,7 @@ class CardContainerBot extends StatelessWidget {
             },
           ),
           HistoryContainer(
-            text: 'History Item 3',
+            text: 'Stadion Utama Gelora Bung Karno',
             latLng: historyLatLng3,
             onTap: () {
               context.push(
@@ -68,7 +68,7 @@ class CardContainerBot extends StatelessWidget {
             },
           ),
           HistoryContainer(
-            text: 'History Item 4',
+            text: 'Bandara Internasional Soekarno Hatta',
             latLng: historyLatLng4,
             onTap: () {
               context.push(
