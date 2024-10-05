@@ -8,9 +8,9 @@ class HomeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 130, // Fixed height for the app bar
-      decoration: const BoxDecoration(
-        color: Color(0xffCBCBCB), // Background color of the AppBar
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onSurface,
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
         ),
