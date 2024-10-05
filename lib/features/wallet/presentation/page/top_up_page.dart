@@ -58,7 +58,11 @@ class _TopUpPageState extends State<TopUpPage> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: const Text('Top-Up'),
+        title: const Text('Top-Up', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF23274D),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
       ),
       body: Center(
         child: Padding(
