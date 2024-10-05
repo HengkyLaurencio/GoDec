@@ -5,7 +5,6 @@ class PromoDesc extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       extendBodyBehindAppBar: true, 
@@ -27,17 +26,13 @@ class PromoDesc extends StatelessWidget {
                     left: 0,
                     right: 0,
                     child: Container(
-                      width: screenWidth,
-                      color: Colors.grey,
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 20, bottom: 20, top: 190),
-                        child: Text(
-                          "DecRide Promo",
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                          ),
+                      height: 250, 
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              'https://cdn.grabon.in/gograbon/images/merchant/1700641825076.jpg'),
+                          fit: BoxFit
+                              .cover,
                         ),
                       ),
                     ),
