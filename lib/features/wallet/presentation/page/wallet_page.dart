@@ -78,7 +78,7 @@ class _WalletPageState extends State<WalletPage> {
                       image: DecorationImage(
                         image: NetworkImage(
                             'https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-background_23-2150913897.jpg'),
-                        fit: BoxFit.none,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
