@@ -22,8 +22,8 @@ class PromoPage extends StatelessWidget {
         body: Stack(
           children: [
             Positioned(
-              bottom: 400,
-              top: 200,
+              bottom: 320,
+              top: 150,
               right: 0,
               left: 0,
               child: Opacity(

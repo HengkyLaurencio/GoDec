@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 class PromocardList extends StatelessWidget {
   final String title;
   final String valid;
+  final String imageUrl; // Add an imageUrl parameter
 
-  const PromocardList({super.key, required this.title, required this.valid});
+  const PromocardList({
+    super.key,
+    required this.title,
+    required this.valid,
+    required this.imageUrl, // Require the imageUrl in the constructor
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +19,16 @@ class PromocardList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black54,
-                offset: Offset(1, 2),
-                blurRadius: 5,
-              )
-            ]),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black54,
+              offset: Offset(1, 2),
+              blurRadius: 5,
+            )
+          ],
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -30,20 +37,22 @@ class PromocardList extends StatelessWidget {
               child: Container(
                 width: screenWidth - 30,
                 height: 138,
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
-                        bottomLeft: Radius.circular(0),
-                        bottomRight: Radius.circular(0)),
-                    image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                            'https://www.geaves.com/media/catalog/product/cache/acd115faf6a75f6594ab269049b631ed/3/1/31552_5.webp'))),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                    bottomLeft: Radius.circular(0),
+                    bottomRight: Radius.circular(0),
+                  ),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(imageUrl), // Use the imageUrl parameter
+                  ),
+                ),
               ),
             ),
             Container(
-              width: screenWidth-30,
+              width: screenWidth - 30,
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,21 +78,25 @@ class PromocardList extends StatelessWidget {
                         child: Row(
                           children: [
                             Container(
-                            alignment: Alignment.center,
-                            width: 55,
-                            height: 35,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(20)),
-                              color: Color(0xFF23274D),
-                            ),
-                            child: const Text('Use',
-                                style: TextStyle(fontSize: 13.5 ,color: Colors.white, fontWeight: FontWeight.w800),
+                              alignment: Alignment.center,
+                              width: 55,
+                              height: 35,
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                                color: Color(0xFF23274D),
+                              ),
+                              child: const Text(
+                                'Use',
+                                style: TextStyle(
+                                  fontSize: 13.5,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w800,
                                 ),
+                              ),
                             )
-                          ]
-                        )
-                      )
-                      
+                          ],
+                        ),
+                      ),
                     ],
                   )
                 ],
