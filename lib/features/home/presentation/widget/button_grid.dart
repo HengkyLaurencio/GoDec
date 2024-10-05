@@ -10,11 +10,11 @@ class ButtonGrid extends StatelessWidget {
     // Daftar fitur dengan nama dan ikon masing-masing
     final List<Map<String, dynamic>> features = [
       {
-        'title': 'CarDec',
+        'title': 'MobilDec',
         'icon': Icons.directions_car,
       },
       {
-        'title': 'BikeDec',
+        'title': 'MotorDec',
         'icon': Icons.motorcycle,
       },
       {
