@@ -16,7 +16,7 @@ class HistoryContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sWidth = MediaQuery.of(context).size.width * 0.85;
-    final sHeight = MediaQuery.of(context).size.height * 0.075;
+    final sHeight = MediaQuery.of(context).size.height * 0.07;
 
     return GestureDetector(
       onTap: onTap,

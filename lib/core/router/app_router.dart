@@ -139,7 +139,6 @@ class AppRouter {
           final lat = state.uri.queryParameters['lat'];
           final lng = state.uri.queryParameters['lng'];
 
-          // Mengonversi parameter menjadi double
           final double? latitude = lat != null ? double.tryParse(lat) : null;
           final double? longitude = lng != null ? double.tryParse(lng) : null;
 

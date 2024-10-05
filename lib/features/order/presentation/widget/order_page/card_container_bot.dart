@@ -3,14 +3,16 @@
 import 'package:flutter/material.dart';
 
 class CardContainerBot extends StatefulWidget {
-  const CardContainerBot({super.key});
+  final VoidCallback onOrderRide; // Tambahkan parameter untuk callback
+
+  const CardContainerBot({super.key, required this.onOrderRide});
 
   @override
   _CardContainerBotState createState() => _CardContainerBotState();
 }
 
 class _CardContainerBotState extends State<CardContainerBot> {
-  String selectedMethod = 'Choose Payment Method';
+  String selectedMethod = 'Select Payment Method';
 
   void _showPaymentMethodSelection(BuildContext context) {
     showModalBottomSheet(
@@ -19,21 +21,11 @@ class _CardContainerBotState extends State<CardContainerBot> {
         return Wrap(
           children: [
             ListTile(
-              leading: const Icon(Icons.payment),
-              title: const Text('Choose Payment Method'),
+              leading: const Icon(Icons.local_atm),
+              title: const Text('Cash'),
               onTap: () {
                 setState(() {
-                  selectedMethod = 'Choose Payment Method';
-                });
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.account_balance),
-              title: const Text('Balance'),
-              onTap: () {
-                setState(() {
-                  selectedMethod = 'Balance';
+                  selectedMethod = 'Cash';
                 });
                 Navigator.pop(context);
               },
@@ -44,16 +36,6 @@ class _CardContainerBotState extends State<CardContainerBot> {
               onTap: () {
                 setState(() {
                   selectedMethod = 'DecPay';
-                });
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.credit_card),
-              title: const Text('Credit Card'),
-              onTap: () {
-                setState(() {
-                  selectedMethod = 'Credit Card';
                 });
                 Navigator.pop(context);
               },
@@ -195,7 +177,7 @@ class _CardContainerBotState extends State<CardContainerBot> {
                   ),
                   const SizedBox(height: 8),
                   InkWell(
-                    onTap: () {},
+                    onTap: widget.onOrderRide, // Panggil callback saat diklik
                     child: Container(
                       width: screenWidth * 0.40,
                       height: screenHeight * 0.35,
@@ -225,7 +207,7 @@ class _CardContainerBotState extends State<CardContainerBot> {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

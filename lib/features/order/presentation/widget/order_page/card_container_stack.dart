@@ -1,12 +1,28 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import '../../widget/order_page/pick_container_bike.dart';
 import '../../widget/order_page/pick_container_car.dart';
 
-class CardContainerStack extends StatelessWidget {
-  final double pricePerKmBike; 
-  final double pricePerKmCar; 
+class CardContainerStack extends StatefulWidget {
+  final double pricePerKmBike;
+  final double pricePerKmCar;
 
-  const CardContainerStack({super.key, required this.pricePerKmBike,required this.pricePerKmCar});
+  const CardContainerStack(
+      {super.key, required this.pricePerKmBike, required this.pricePerKmCar});
+
+  @override
+  _CardContainerStackState createState() => _CardContainerStackState();
+}
+
+class _CardContainerStackState extends State<CardContainerStack> {
+  String selectedOption = '';
+
+  void _selectOption(String option) {
+    setState(() {
+      selectedOption = option;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +62,17 @@ class CardContainerStack extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              PickContainerBike(pricePerKmBike: pricePerKmBike),
+              PickContainerBike(
+                pricePerKmBike: widget.pricePerKmBike,
+                isSelected: selectedOption == 'bike',
+                onSelect: () => _selectOption('bike'),
+              ),
               const SizedBox(height: 12),
-              PickContainerCar(pricePerKmCar: pricePerKmCar),
+              PickContainerCar(
+                pricePerKmCar: widget.pricePerKmCar,
+                isSelected: selectedOption == 'car',
+                onSelect: () => _selectOption('car'),
+              ),
             ],
           ),
         ],

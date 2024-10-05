@@ -61,7 +61,7 @@ class _CardContainerStackState extends State<CardContainerStack> {
           ),
           const SizedBox(height: 8),
           SizedBox(
-            height: 120,
+            height: 140,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: FlutterMap(
@@ -93,66 +93,29 @@ class _CardContainerStackState extends State<CardContainerStack> {
               ),
             ),
           ),
-          const SizedBox(height: 8),
-          SizedBox(
-            height: 35,
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Search Destination Location',
-                prefixIcon: const Icon(Icons.location_on),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding: const EdgeInsets.symmetric(vertical: 0.0),
-              ),
-            ),
-          ),
           const SizedBox(height: 10),
           Row(
             children: [
-              SizedBox(
-                width: 100,
-                height: 25,
+              Expanded(
                 child: OutlinedButton(
                   onPressed: () {
                     context.push('/order/map');
                   },
-                  child: const Text('Button'),
-                ),
-              ),
-              const SizedBox(width: 8),
-              GestureDetector(
-                onTap: () {
-                  context.push('/order/map');
-                },
-                child: Container(
-                  width: 23,
-                  height: 23,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        spreadRadius: 1,
-                        blurRadius: 8,
-                        offset: const Offset(0, 5),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.map, size: 16),
+                      SizedBox(width: 15),
+                      Text(
+                        'Select Location From Map',
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: Theme.of(context).colorScheme.primary,
-                      size: 16,
-                    ),
                   ),
                 ),
               ),
             ],
-          ),
+          )
         ],
       ),
     );
