@@ -1,7 +1,68 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
-class CardContainerBot extends StatelessWidget {
+class CardContainerBot extends StatefulWidget {
   const CardContainerBot({super.key});
+
+  @override
+  _CardContainerBotState createState() => _CardContainerBotState();
+}
+
+class _CardContainerBotState extends State<CardContainerBot> {
+  String selectedMethod = 'Choose Payment Method';
+
+  void _showPaymentMethodSelection(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Wrap(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.payment),
+              title: const Text('Choose Payment Method'),
+              onTap: () {
+                setState(() {
+                  selectedMethod = 'Choose Payment Method';
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.account_balance),
+              title: const Text('Balance'),
+              onTap: () {
+                setState(() {
+                  selectedMethod = 'Balance';
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.account_balance_wallet),
+              title: const Text('DecPay'),
+              onTap: () {
+                setState(() {
+                  selectedMethod = 'DecPay';
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.credit_card),
+              title: const Text('Credit Card'),
+              onTap: () {
+                setState(() {
+                  selectedMethod = 'Credit Card';
+                });
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,32 +90,16 @@ class CardContainerBot extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                width: screenWidth * 0.35,
-                height: screenHeight * 0.25,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.onSurface,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(0, 5),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 8),
-            Center(
-              child: Column(
-                children: [
-                  Container(
-                    width: screenWidth * 0.95,
-                    height: screenHeight * 0.2,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    _showPaymentMethodSelection(context);
+                  },
+                  child: Container(
+                    width: screenWidth * 0.55,
+                    height: screenHeight * 0.25,
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.surface,
                       borderRadius: BorderRadius.circular(30),
@@ -71,22 +116,111 @@ class CardContainerBot extends StatelessWidget {
                         ),
                       ],
                     ),
+                    child: Center(
+                      child: Text(
+                        selectedMethod,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF23274D),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: screenWidth * 0.35,
+                  height: screenHeight * 0.25,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        spreadRadius: 1,
+                        blurRadius: 8,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Voucher',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Center(
+              child: Column(
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: screenWidth * 0.95,
+                      height: screenHeight * 0.2,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface,
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                          color: Colors.black.withOpacity(0.5),
+                          width: 1,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 8,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Apply Voucher',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF23274D),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 8),
-                  Container(
-                    width: screenWidth * 0.55,
-                    height: screenHeight * 0.35,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onSurface,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          spreadRadius: 1,
-                          blurRadius: 8,
-                          offset: const Offset(0, 5),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: screenWidth * 0.40,
+                      height: screenHeight * 0.35,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 8,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Order Ride Now',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ],

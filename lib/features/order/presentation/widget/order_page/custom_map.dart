@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -10,13 +12,13 @@ class CustomMap extends StatelessWidget {
   final Function(LatLng point) onMapTap;
 
   const CustomMap({
-    Key? key,
+    super.key,
     required this.mapController,
     required this.currentLatLng,
     this.destination,
     required this.routePoints,
     required this.onMapTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
