@@ -5,6 +5,16 @@ import 'package:godec/features/transit/presentation/widget/transport_card.dart';
 class TransitPage extends StatelessWidget {
   const TransitPage({super.key});
 
+  void _showMaintenanceSnackBar(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('In maintenance'),
+        backgroundColor: Theme.of(context).colorScheme.onSurface,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +60,7 @@ class TransitPage extends StatelessWidget {
                     ),
                     icon: Icons.train,
                     onTap: () {
-                      // Aksi ketika KRL dipilih
+                      _showMaintenanceSnackBar(context); // Tampilkan snackbar
                     },
                   ),
                 ),
@@ -65,7 +75,7 @@ class TransitPage extends StatelessWidget {
                     ),
                     icon: Icons.subway,
                     onTap: () {
-                      // Aksi ketika LRT dipilih
+                      _showMaintenanceSnackBar(context); // Tampilkan snackbar
                     },
                   ),
                 ),
@@ -80,7 +90,7 @@ class TransitPage extends StatelessWidget {
                     ),
                     icon: Icons.directions_transit,
                     onTap: () {
-                      // Aksi ketika MRT dipilih
+                      _showMaintenanceSnackBar(context); // Tampilkan snackbar
                     },
                   ),
                 ),
@@ -95,7 +105,7 @@ class TransitPage extends StatelessWidget {
                     ),
                     icon: Icons.directions_bus,
                     onTap: () {
-                      // Aksi ketika TransJakarta dipilih
+                      _showMaintenanceSnackBar(context); // Tampilkan snackbar
                     },
                   ),
                 ),
