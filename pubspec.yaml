@@ -82,6 +82,7 @@ flutter:
     - assets/BG_Auth_1.png
     - assets/BG_Auth_2.png
     - assets/promo_bluebird.jpg
+    - assets/carmoto.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

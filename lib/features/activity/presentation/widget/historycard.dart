@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HistoryCard extends StatelessWidget {
+  final String title;
   final String location;
   final String price;
 
   const HistoryCard({
-    required this.location,
-    required this.price,
-    super.key
-  });
+      required this.title,
+      required this.location,
+      required this.price,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class HistoryCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
         width: double.infinity,
-        height: 140,
+        height: 160,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -38,10 +39,17 @@ class HistoryCard extends StatelessWidget {
               // Kotak Dummy Icon
               Container(
                 width: 83,
-                height: 83,
+                height: 120,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
                   borderRadius: BorderRadius.circular(8),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: 
+                    Image.asset(
+                    'assets/carmoto.png',
+                    fit: BoxFit.cover, 
+                  ),
                 ),
               ),
               const SizedBox(width: 16),
@@ -52,11 +60,17 @@ class HistoryCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      location,
+                      title,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      location,
+                      style: const TextStyle(fontSize: 14),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -65,15 +79,16 @@ class HistoryCard extends StatelessWidget {
                       children: [
                         Text(
                           price,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[600],
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            GoRouter.of(context).push('/order/map'); 
-                          },  
+                            GoRouter.of(context).push('/order');
+                          },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
                               vertical: 8,
