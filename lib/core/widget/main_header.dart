@@ -4,21 +4,21 @@ import 'package:go_router/go_router.dart';
 class MainHeader extends StatelessWidget {
   final String title;
   final Color textColor;
+  final Color backgroundColor;
 
-  const MainHeader(
-      {super.key, required this.title, this.textColor = Colors.black});
+  const MainHeader({
+    super.key,
+    required this.title,
+    this.textColor = const Color.fromARGB(255, 255, 255, 255),
+    this.backgroundColor = const Color(0xFF23274D),
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 17),
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: Colors.black, // Warna border
-            width: 1.0, // Ketebalan border
-          ),
-        ),
+      decoration: BoxDecoration(
+        color: backgroundColor,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

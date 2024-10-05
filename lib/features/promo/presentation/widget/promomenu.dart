@@ -44,7 +44,7 @@ class CardList extends StatelessWidget {
                 image:  DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                    'https://www.geaves.com/media/catalog/product/cache/acd115faf6a75f6594ab269049b631ed/3/1/31552_5.webp',
+                    'https://cdn.grabon.in/gograbon/images/merchant/1700641825076.jpg',
                   ),
                 ),
               ),

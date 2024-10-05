@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:go_router/go_router.dart';
@@ -5,9 +7,8 @@ import 'package:latlong2/latlong.dart';
 import '../../../../../core/widget/location_provider.dart';
 
 class CardContainerStack extends StatefulWidget {
-  final MapController
-      mapController; // Mengambil mapController sebagai parameter
-  final LatLng currentLatLng; // Mengambil currentLatLng sebagai parameter
+  final MapController mapController;
+  final LatLng currentLatLng;
 
   const CardContainerStack({
     super.key,
@@ -59,16 +60,14 @@ class _CardContainerStackState extends State<CardContainerStack> {
             style: TextStyle(fontSize: 12),
           ),
           const SizedBox(height: 8),
-          // Widget FlutterMap di sini
           SizedBox(
-            height: 120,
+            height: 140,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(15), // Add border radius here
+              borderRadius: BorderRadius.circular(15),
               child: FlutterMap(
                 mapController: widget.mapController,
                 options: MapOptions(
-                  center: widget
-                      .currentLatLng, // Menggunakan currentLatLng yang diambil dari widget
+                  center: widget.currentLatLng,
                   zoom: 13,
                   interactionOptions: const InteractionOptions(
                     flags: ~InteractiveFlag.doubleTapZoom,
@@ -94,66 +93,29 @@ class _CardContainerStackState extends State<CardContainerStack> {
               ),
             ),
           ),
-          const SizedBox(height: 8),
-          SizedBox(
-            height: 35,
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Destination Location',
-                prefixIcon: const Icon(Icons.location_on),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding: const EdgeInsets.symmetric(vertical: 0.0),
-              ),
-            ),
-          ),
           const SizedBox(height: 10),
           Row(
             children: [
-              SizedBox(
-                width: 100,
-                height: 25,
+              Expanded(
                 child: OutlinedButton(
                   onPressed: () {
                     context.push('/order/map');
                   },
-                  child: const Text('Button'),
-                ),
-              ),
-              const SizedBox(width: 8),
-              GestureDetector(
-                onTap: () {
-                  context.push('/order/map');
-                },
-                child: Container(
-                  width: 23,
-                  height: 23,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        spreadRadius: 1,
-                        blurRadius: 8,
-                        offset: const Offset(0, 5),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.map, size: 16),
+                      SizedBox(width: 15),
+                      Text(
+                        'Select Location From Map',
+                        style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: Theme.of(context).colorScheme.primary,
-                      size: 16,
-                    ),
                   ),
                 ),
               ),
             ],
-          ),
+          )
         ],
       ),
     );

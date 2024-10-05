@@ -135,7 +135,15 @@ class AppRouter {
       ),
       GoRoute(
         path: '/order/map',
-        builder: (context, state) => const OrderPage(),
+        builder: (context, state) {
+          final lat = state.uri.queryParameters['lat'];
+          final lng = state.uri.queryParameters['lng'];
+
+          final double? latitude = lat != null ? double.tryParse(lat) : null;
+          final double? longitude = lng != null ? double.tryParse(lng) : null;
+
+          return OrderPage(lat: latitude, lng: longitude);
+        },
       ),
       GoRoute(
         path: '/promo/list',

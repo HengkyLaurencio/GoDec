@@ -1,7 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
+import 'package:godec/features/order/presentation/widget/order_page/card_container_ride.dart';
 import 'package:latlong2/latlong.dart';
 import '../widget/arrow_back.dart';
-import '../widget/order_page/check_container.dart';
 import '../widget/order_page/card_container_stack.dart';
 import '../widget/order_page/card_container_top.dart';
 import '../widget/order_page/card_container_bot.dart';
@@ -13,7 +15,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class OrderPage extends StatefulWidget {
-  const OrderPage({super.key});
+  final double? lat;
+  final double? lng;
+
+  const OrderPage({super.key, this.lat, this.lng});
 
   @override
   State<OrderPage> createState() => _OrderPageState();
@@ -27,6 +32,7 @@ class _OrderPageState extends State<OrderPage> {
       '5b3ce3597851110001cf624811a8bd52e2f0484a90c1cf49e56570d7';
   LatLng? destination;
   double? distanceInM;
+  bool isRideOrdered = false;
 
   @override
   void initState() {
@@ -36,6 +42,9 @@ class _OrderPageState extends State<OrderPage> {
     locationProvider.getCurrentLocation().then((_) {
       setState(() {
         mapController.move(locationProvider.currentLatLng, mapController.zoom);
+        if (widget.lat != null && widget.lng != null) {
+          _addDestinationMarker(LatLng(widget.lat!, widget.lng!));
+        }
       });
     });
   }
@@ -55,8 +64,6 @@ class _OrderPageState extends State<OrderPage> {
         routePoints =
             coords.map((coord) => LatLng(coord[1], coord[0])).toList();
       });
-    } else {
-      print('Gagal mengambil rute');
     }
   }
 
@@ -65,7 +72,7 @@ class _OrderPageState extends State<OrderPage> {
       destination = point;
       routePoints.clear();
 
-      final Distance distance = Distance();
+      const Distance distance = Distance();
       distanceInM = distance.as(
         LengthUnit.Meter,
         locationProvider.currentLatLng,
@@ -74,6 +81,12 @@ class _OrderPageState extends State<OrderPage> {
     });
 
     _getRoute(locationProvider.currentLatLng, destination!);
+  }
+
+  void _orderRide() {
+    setState(() {
+      isRideOrdered = true;
+    });
   }
 
   double getPricePerKmBike() {
@@ -113,12 +126,6 @@ class _OrderPageState extends State<OrderPage> {
                         left: 20,
                         child: ArrowBack(),
                       ),
-                      const Positioned(
-                        top: 90,
-                        left: 20,
-                        right: 20,
-                        child: CheckContainer(),
-                      ),
                       if (distanceInM != null)
                         DistanceDisplay(distanceInMeters: distanceInM!),
                     ],
@@ -127,26 +134,34 @@ class _OrderPageState extends State<OrderPage> {
               ],
             ),
           ),
-          const Positioned(
-            bottom: 85,
-            left: 20,
-            right: 20,
-            child: CardContainerTop(),
-          ),
-          Positioned(
-            bottom: 80,
-            left: 30,
-            right: 30,
-            child: CardContainerStack(
+          if (!isRideOrdered) ...[
+            const Positioned(
+              bottom: 85,
+              left: 20,
+              right: 20,
+              child: CardContainerTop(),
+            ),
+            Positioned(
+              bottom: 80,
+              left: 30,
+              right: 30,
+              child: CardContainerStack(
                 pricePerKmBike: getPricePerKmBike(),
-                pricePerKmCar: getPricePerKmCar()),
-          ),
-          const Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: CardContainerBot(),
-          ),
+                pricePerKmCar: getPricePerKmCar(),
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: CardContainerBot(onOrderRide: _orderRide),
+            ),
+          ] else ...[
+            const Positioned(
+              bottom: 0,
+              child: CardContainerRide(),
+            ),
+          ],
         ],
       ),
     );

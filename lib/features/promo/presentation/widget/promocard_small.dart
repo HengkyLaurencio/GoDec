@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:share_plus/share_plus.dart';
 class PromoCardSmall extends StatelessWidget {
   final String description;
   final IconData icon;
   final int color;
   final int fontColor;
   final String targetScreen; 
+  final bool targetLink; 
 
   const PromoCardSmall({
     super.key,
@@ -15,6 +16,7 @@ class PromoCardSmall extends StatelessWidget {
     required this.color,
     required this.fontColor,
     required this.targetScreen, 
+    required this.targetLink, 
   });
 
   @override
@@ -22,6 +24,9 @@ class PromoCardSmall extends StatelessWidget {
     return InkWell(
       onTap: () {
         context.push(targetScreen);
+        if(targetLink){
+          Share.share('Hey, checkout our ride hailling app, Godec! at www.github.com/HengkyLaurencio/GoDec');
+        }
       },
       child: Card(
         elevation: 5,

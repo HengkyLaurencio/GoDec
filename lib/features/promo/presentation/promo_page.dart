@@ -3,6 +3,7 @@ import 'package:godec/core/widget/main_header.dart';
 import 'package:godec/features/promo/presentation/widget/promocard.dart';
 import 'package:godec/features/promo/presentation/widget/promocard_small.dart';
 import 'package:godec/features/promo/presentation/widget/promomenu.dart';
+import 'package:share_plus/share_plus.dart';
 
 class PromoPage extends StatelessWidget {
   final String imageUrl =
@@ -21,8 +22,8 @@ class PromoPage extends StatelessWidget {
         body: Stack(
           children: [
             Positioned(
-              bottom: 400,
-              top: 200,
+              bottom: 320,
+              top: 150,
               right: 0,
               left: 0,
               child: Opacity(
@@ -51,13 +52,15 @@ class PromoPage extends StatelessWidget {
                           ),
                           PromoCardSmall(
                             targetScreen: '/promo/form',
+                            targetLink: false,
                             description: 'Got a promo code? Enter here',
                             icon: Icons.percent,
                             color: 0xFFFFFFFF,
                             fontColor: 0xFF000000,
                           ),
                           PromoCardSmall(
-                            targetScreen: '/promo/form',
+                            targetScreen: '/promo',
+                            targetLink: true,
                             description: 'Invite and Earn',
                             color: 0xFF23274D,
                             fontColor: 0xFFFFFFFF,

@@ -37,6 +37,7 @@ class _MainNavigationState extends State<MainNavigation> {
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: _currentIndex,
+          selectedItemColor: Theme.of(context).colorScheme.onSurface,
           onTap: (index) {
             setState(() {
               _currentIndex = index;

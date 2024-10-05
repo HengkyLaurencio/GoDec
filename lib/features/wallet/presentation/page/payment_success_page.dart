@@ -8,7 +8,7 @@ class PaymentSuccessPage extends StatelessWidget {
 
   const PaymentSuccessPage({
     super.key,
-    this.amount = "75.000",
+    this.amount = "50.000",
     this.transactionNumber = "OD0123456789",
     this.targetScreen = '/wallet',
   });

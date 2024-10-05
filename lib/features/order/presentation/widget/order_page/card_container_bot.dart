@@ -1,7 +1,51 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: library_private_types_in_public_api
 
-class CardContainerBot extends StatelessWidget {
-  const CardContainerBot({super.key});
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class CardContainerBot extends StatefulWidget {
+  final VoidCallback onOrderRide;
+
+  const CardContainerBot({super.key, required this.onOrderRide});
+
+  @override
+  _CardContainerBotState createState() => _CardContainerBotState();
+}
+
+class _CardContainerBotState extends State<CardContainerBot> {
+  String selectedMethod = 'Select Payment Method';
+
+  void _showPaymentMethodSelection(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Wrap(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.local_atm),
+              title: const Text('Cash'),
+              onTap: () {
+                setState(() {
+                  selectedMethod = 'Cash';
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.account_balance_wallet),
+              title: const Text('DecPay'),
+              onTap: () {
+                setState(() {
+                  selectedMethod = 'DecPay';
+                });
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +55,7 @@ class CardContainerBot extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       width: screenWidth,
-      height: screenHeight + 15,
+      height: screenHeight - 6,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
@@ -29,32 +73,16 @@ class CardContainerBot extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                width: screenWidth * 0.35,
-                height: screenHeight * 0.25,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.onSurface,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(0, 5),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 8),
-            Center(
-              child: Column(
-                children: [
-                  Container(
-                    width: screenWidth * 0.95,
-                    height: screenHeight * 0.2,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    _showPaymentMethodSelection(context);
+                  },
+                  child: Container(
+                    width: screenWidth * 0.65,
+                    height: screenHeight * 0.25,
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.surface,
                       borderRadius: BorderRadius.circular(30),
@@ -71,27 +99,80 @@ class CardContainerBot extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  Container(
-                    width: screenWidth * 0.55,
-                    height: screenHeight * 0.35,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.onSurface,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          spreadRadius: 1,
-                          blurRadius: 8,
-                          offset: const Offset(0, 5),
+                    child: Center(
+                      child: Text(
+                        selectedMethod,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF23274D),
                         ),
-                      ],
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: screenWidth * 0.25,
+                  height: screenHeight * 0.25,
+                  child: TextButton(
+                    onPressed: () {
+                      context.push('/promo/list');
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.onSurface,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      padding: const EdgeInsets.all(0),
+                    ),
+                    child: const Text(
+                      'Apply Voucher',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Center(
+              child: Column(
+                children: [
+                  const SizedBox(height: 4),
+                  InkWell(
+                    onTap: widget.onOrderRide,
+                    child: Container(
+                      width: screenWidth * 0.40,
+                      height: screenHeight * 0.3,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            spreadRadius: 1,
+                            blurRadius: 8,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Order Ride Now',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
