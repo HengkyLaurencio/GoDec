@@ -76,8 +76,9 @@ class _WalletPageState extends State<WalletPage> {
                   child: Container(
                     decoration: const BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(' '),
-                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                            'https://img.freepik.com/free-photo/3d-rendering-abstract-black-white-background_23-2150913897.jpg'),
+                        fit: BoxFit.none,
                       ),
                     ),
                   ),

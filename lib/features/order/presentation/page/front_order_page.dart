@@ -47,8 +47,8 @@ class _FrontOrderPageState extends State<FrontOrderPage> {
                     child: Container(
                       width: screenWidth,
                       height: 250,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF23274D),
                       ),
                     ),
                   ),
@@ -69,8 +69,7 @@ class _FrontOrderPageState extends State<FrontOrderPage> {
                     right: 20,
                     child: CardContainerStack(
                       mapController: mapController,
-                      currentLatLng: locationProvider
-                          .currentLatLng, 
+                      currentLatLng: locationProvider.currentLatLng,
                     ),
                   ),
                 ],

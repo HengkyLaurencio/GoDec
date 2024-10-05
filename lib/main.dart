@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:godec/core/router/app_router.dart';
 import 'package:godec/features/auth/blocs/authentication_bloc/authentication_bloc.dart';
@@ -14,6 +15,9 @@ void main() async {
   await Firebase.initializeApp();
   final userRepository = UserRepository();
   Bloc.observer = SimpleBlocObserver();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(MyApp(userRepository: userRepository));
 }
 
@@ -27,7 +31,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthenticationBloc(userRepository: userRepository),
+          create: (context) =>
+              AuthenticationBloc(userRepository: userRepository),
         ),
         BlocProvider(
           create: (context) => SignInBloc(userRepository),
