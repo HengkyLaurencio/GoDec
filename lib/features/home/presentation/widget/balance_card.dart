@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BalanceCard extends StatelessWidget {
   const BalanceCard({super.key});
@@ -24,7 +25,7 @@ class BalanceCard extends StatelessWidget {
           Icon(
             Icons.account_balance_wallet,
             size: 32,
-            color: Colors.grey[700],
+            color: Theme.of(context).colorScheme.onSurface,
           ),
           const SizedBox(width: 16),
           const Expanded(
@@ -43,9 +44,11 @@ class BalanceCard extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push('/wallet/topup');
+            },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.grey,
+              backgroundColor: Theme.of(context).colorScheme.onSurface,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
