@@ -3,6 +3,7 @@ import 'package:godec/features/home/presentation/widget/button_grid.dart';
 import '../widget/home_app_bar.dart';
 import '../widget/balance_card.dart';
 import '../widget/promo_card.dart';
+import '../widget/insurance_promo_card.dart'; // Import the InsurancePromoCard
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,21 +23,24 @@ class HomePage extends StatelessWidget {
                 children: [
                   // Promo image box
                   Positioned(
-                    top: 130 - 20, // Adjust overlap with AppBar
+                    top: 130 - 28,
                     left: 0,
                     right: 0,
                     child: Container(
                       width: screenWidth,
-                      height: 170,
+                      height: 180,
                       color: Colors.grey,
                       child: const Center(
-                        child: Text(
-                          'Promo Box',
-                          style: TextStyle(color: Colors.white, fontSize: 24),
+                        child: Image(
+                          image: AssetImage('assets/promo_bluebird.jpg'),
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
                   ),
+
                   // AppBar
                   const Positioned(
                     top: 0,
@@ -55,29 +59,41 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
+            const Padding(
+              padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 15.0),
+              child: ButtonGrid(),
+            ),
+
             const SizedBox(
-              height: 120, // Fixed height for promo section
+              height: 120,
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
-                    PromoCard(title: 'Promo 1'),
+                    PromoCard(
+                        imageUrl:
+                            'https://www.dsf.my/wp-content/uploads/2021/08/Airsia-e-hailing.png?v=1629939630'),
                     SizedBox(width: 16),
-                    PromoCard(title: 'Promo 1'),
+                    PromoCard(
+                        imageUrl:
+                            'https://cdn.grabon.in/gograbon/images/merchant/1700641825076.jpg'),
                     SizedBox(width: 16),
-                    PromoCard(title: 'Promo 1'),
+                    PromoCard(
+                        imageUrl:
+                            'https://bluebirdgroup.com/storage/promotion/66fb6b796f4a8.jpg'),
                     SizedBox(width: 16),
-                    PromoCard(title: 'Promo 1'),
+                    PromoCard(
+                        imageUrl:
+                            'https://viuit.id/wp-content/uploads/2023/03/Sticky-Promo-1-1024x569.png'),
                   ],
                 ),
               ),
             ),
 
-            // Buttons Grid 4x2 (diluar Stack)
             const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: ButtonGrid(),
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: InsurancePromoCard(),
             ),
           ],
         ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class PromoCard extends StatelessWidget {
-  final String title;
+  final String imageUrl;
 
-  const PromoCard({super.key, required this.title});
+  const PromoCard({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,16 @@ class PromoCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Center(
-        child: Text(
-          title,
-          style: const TextStyle(color: Colors.white, fontSize: 18),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12), // Ensure the image is clipped to the card shape
+        child: Image.network(
+          imageUrl,
+          fit: BoxFit.cover, 
+          width: double.infinity,
+          height: double.infinity,
+          errorBuilder: (context, error, stackTrace) {
+            return const Center(child: Text('Image not found', style: TextStyle(color: Colors.white)));
+          },
         ),
       ),
     );

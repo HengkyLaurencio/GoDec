@@ -53,6 +53,18 @@ class _TopUpPageState extends State<TopUpPage> {
     );
   }
 
+  void _confirmTopUp(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('Top-up Successful!'),
+        backgroundColor: Theme.of(context).colorScheme.onSurface,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,7 +175,9 @@ class _TopUpPageState extends State<TopUpPage> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                _confirmTopUp(context);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.onSurface,
                 minimumSize: const Size(double.infinity, 50),
