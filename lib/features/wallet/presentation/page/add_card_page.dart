@@ -29,7 +29,11 @@ class _AddCardPageState extends State<AddCardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Card'),
+        title: const Text('Add Card', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF23274D),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -44,7 +48,8 @@ class _AddCardPageState extends State<AddCardPage> {
                   children: [
                     const Text(
                       'Card Number',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     TextFormField(
                       decoration: const InputDecoration(
@@ -53,7 +58,9 @@ class _AddCardPageState extends State<AddCardPage> {
                       keyboardType: TextInputType.number,
                       maxLength: 16,
                       validator: (value) {
-                        if (value == null || value.isEmpty || value.length != 16) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            value.length != 16) {
                           return 'Please enter a valid card number';
                         }
                         return null;
@@ -71,7 +78,8 @@ class _AddCardPageState extends State<AddCardPage> {
                             children: [
                               const Text(
                                 'Expiry Date',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
                                 height: 80,
@@ -82,11 +90,14 @@ class _AddCardPageState extends State<AddCardPage> {
                                   ),
                                   keyboardType: TextInputType.datetime,
                                   inputFormatters: [
-                                    FilteringTextInputFormatter.allow(RegExp(r'[0-9/]')),
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp(r'[0-9/]')),
                                     LengthLimitingTextInputFormatter(5),
                                   ],
                                   validator: (value) {
-                                    if (value == null || !RegExp(r'^(0[1-9]|1[0-2])\/([0-9]{2})$').hasMatch(value)) {
+                                    if (value == null ||
+                                        !RegExp(r'^(0[1-9]|1[0-2])\/([0-9]{2})$')
+                                            .hasMatch(value)) {
                                       return 'Please enter a valid expiry date';
                                     }
                                     return null;
@@ -106,7 +117,8 @@ class _AddCardPageState extends State<AddCardPage> {
                             children: [
                               const Text(
                                 'CVV',
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
                                 height: 80,
@@ -142,7 +154,8 @@ class _AddCardPageState extends State<AddCardPage> {
                               cardAdded = true;
                             });
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Card added successfully')),
+                              const SnackBar(
+                                  content: Text('Card added successfully')),
                             );
                           }
                         },
@@ -179,7 +192,8 @@ class _AddCardPageState extends State<AddCardPage> {
                           ),
                           Text(
                             cardNumber != null
-                                ? cardNumber!.replaceAllMapped(RegExp(r'.{4}'), (match) => '${match.group(0)} ')
+                                ? cardNumber!.replaceAllMapped(RegExp(r'.{4}'),
+                                    (match) => '${match.group(0)} ')
                                 : 'XXXX XXXX XXXX XXXX',
                             style: const TextStyle(
                               color: Colors.white,

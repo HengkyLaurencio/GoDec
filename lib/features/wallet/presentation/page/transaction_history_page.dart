@@ -8,7 +8,12 @@ class TransactionHistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Transaction History'),
+        title: const Text('Transaction History',
+            style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF23274D),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),

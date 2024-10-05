@@ -80,10 +80,11 @@ class _PaymentPageState extends State<PaymentPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title:
-            const Text('Payment', style: TextStyle(color: Color(0xFF23274D))),
-        backgroundColor: Colors.white,
-        iconTheme: const IconThemeData(color: Color(0xFF23274D)),
+        title: const Text('Payment', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF23274D),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
         elevation: 0,
       ),
       body: Padding(
