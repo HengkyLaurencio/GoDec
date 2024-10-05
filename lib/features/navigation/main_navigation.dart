@@ -19,8 +19,8 @@ class _MainNavigationState extends State<MainNavigation> {
   final List<Widget> _pages = [
     const HomePage(),
     const PromoPage(),
-    const WalletPage(),
-    const WhiteScreen(),
+    const WalletPage(), 
+    const ActivityPage(),
   ];
 
   @override

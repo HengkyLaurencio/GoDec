@@ -28,7 +28,6 @@ class _CardContainerStackState extends State<CardContainerStack> {
 
     locationProvider.getCurrentLocation().then((_) {
       setState(() {
-        // Memindahkan peta ke lokasi baru
         widget.mapController
             .move(locationProvider.currentLatLng, widget.mapController.zoom);
       });
