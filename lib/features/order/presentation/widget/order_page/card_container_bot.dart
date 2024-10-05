@@ -1,9 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CardContainerBot extends StatefulWidget {
-  final VoidCallback onOrderRide; // Tambahkan parameter untuk callback
+  final VoidCallback onOrderRide;
 
   const CardContainerBot({super.key, required this.onOrderRide});
 
@@ -54,7 +55,7 @@ class _CardContainerBotState extends State<CardContainerBot> {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       width: screenWidth,
-      height: screenHeight + 15,
+      height: screenHeight - 6,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
@@ -80,7 +81,7 @@ class _CardContainerBotState extends State<CardContainerBot> {
                     _showPaymentMethodSelection(context);
                   },
                   child: Container(
-                    width: screenWidth * 0.55,
+                    width: screenWidth * 0.65,
                     height: screenHeight * 0.25,
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.surface,
@@ -111,25 +112,23 @@ class _CardContainerBotState extends State<CardContainerBot> {
                   ),
                 ),
                 Container(
-                  width: screenWidth * 0.35,
+                  width: screenWidth * 0.25,
                   height: screenHeight * 0.25,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.onSurface,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        spreadRadius: 1,
-                        blurRadius: 8,
-                        offset: const Offset(0, 5),
+                  child: TextButton(
+                    onPressed: () {
+                      context.push('/promo/list');
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.onSurface,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                    ],
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Voucher',
+                      padding: const EdgeInsets.all(0),
+                    ),
+                    child: const Text(
+                      'Apply Voucher',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -138,49 +137,15 @@ class _CardContainerBotState extends State<CardContainerBot> {
                 ),
               ],
             ),
-            const SizedBox(height: 8),
             Center(
               child: Column(
                 children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      width: screenWidth * 0.95,
-                      height: screenHeight * 0.2,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.surface,
-                        borderRadius: BorderRadius.circular(30),
-                        border: Border.all(
-                          color: Colors.black.withOpacity(0.5),
-                          width: 1,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            spreadRadius: 1,
-                            blurRadius: 8,
-                            offset: const Offset(0, 5),
-                          ),
-                        ],
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Apply Voucher',
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF23274D),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
                   InkWell(
-                    onTap: widget.onOrderRide, // Panggil callback saat diklik
+                    onTap: widget.onOrderRide,
                     child: Container(
                       width: screenWidth * 0.40,
-                      height: screenHeight * 0.35,
+                      height: screenHeight * 0.3,
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.onSurface,
                         borderRadius: BorderRadius.circular(30),
