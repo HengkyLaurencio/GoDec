@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class DistanceDisplay extends StatelessWidget {
   final double distanceInMeters;
 
-  const DistanceDisplay({Key? key, required this.distanceInMeters})
-      : super(key: key);
+  const DistanceDisplay({super.key, required this.distanceInMeters});
 
   @override
   Widget build(BuildContext context) {

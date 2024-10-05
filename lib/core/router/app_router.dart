@@ -23,7 +23,7 @@ import 'package:godec/features/wallet/presentation/page/add_card_page.dart';
 import 'package:godec/features/wallet/presentation/page/payment_page.dart';
 import 'package:godec/features/wallet/presentation/page/payment_success_page.dart';
 import 'package:godec/features/wallet/presentation/page/top_up_page.dart';
-import 'package:godec/features/wallet/presentation/widget/transaction_history_page.dart';
+import 'package:godec/features/wallet/presentation/page/transaction_history_page.dart';
 
 import '../../features/auth/blocs/authentication_bloc/authentication_bloc.dart';
 
@@ -135,7 +135,16 @@ class AppRouter {
       ),
       GoRoute(
         path: '/order/map',
-        builder: (context, state) => const OrderPage(),
+        builder: (context, state) {
+          final lat = state.uri.queryParameters['lat'];
+          final lng = state.uri.queryParameters['lng'];
+
+          // Mengonversi parameter menjadi double
+          final double? latitude = lat != null ? double.tryParse(lat) : null;
+          final double? longitude = lng != null ? double.tryParse(lng) : null;
+
+          return OrderPage(lat: latitude, lng: longitude);
+        },
       ),
       GoRoute(
         path: '/promo/list',

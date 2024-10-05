@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 class PaymentPage extends StatefulWidget {
   static String scannedResult = '';
@@ -12,8 +13,25 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
-  final TextEditingController _controller = TextEditingController(text: '0');
-  String selectedMethod = 'Select a payment method';
+  final TextEditingController _controller = TextEditingController();
+  String selectedMethod = 'Choose your payment method';
+  bool isButtonActive = false;
+  String merchantName = 'Alleyway Muse';
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.text = 'Rp 0';
+  }
+
+  String formatCurrency(String value) {
+    if (value.isEmpty) return 'Rp 0';
+    final formatter =
+        NumberFormat.currency(locale: 'id', symbol: 'Rp ', decimalDigits: 0);
+    final int amount =
+        int.tryParse(value.replaceAll('.', '').replaceAll('Rp ', '')) ?? 0;
+    return formatter.format(amount);
+  }
 
   void _showPaymentMethodSelection(BuildContext context) {
     showModalBottomSheet(
@@ -22,31 +40,31 @@ class _PaymentPageState extends State<PaymentPage> {
         return Wrap(
           children: [
             ListTile(
-              leading: const Icon(Icons.credit_card),
-              title: const Text('Credit Card'),
-              onTap: () {
-                setState(() {
-                  selectedMethod = 'Credit Card';
-                });
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
               leading: const Icon(Icons.account_balance),
-              title: const Text('Bank Transfer'),
+              title: const Text('Balance'),
               onTap: () {
                 setState(() {
-                  selectedMethod = 'Bank Transfer';
+                  selectedMethod = 'Balance';
                 });
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: const Icon(Icons.account_balance_wallet),
-              title: const Text('E-Wallet'),
+              title: const Text('DecPay'),
               onTap: () {
                 setState(() {
-                  selectedMethod = 'E-Wallet';
+                  selectedMethod = 'DecPay';
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.credit_card),
+              title: const Text('Credit Card'),
+              onTap: () {
+                setState(() {
+                  selectedMethod = 'Credit Card';
                 });
                 Navigator.pop(context);
               },
@@ -60,71 +78,36 @@ class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Payment'),
+        title:
+            const Text('Payment', style: TextStyle(color: Color(0xFF23274D))),
+        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Color(0xFF23274D)),
+        elevation: 0,
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Card(
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextField(
-                    controller: _controller,
-                    textAlign: TextAlign.center,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.store, color: Color(0xFF23274D), size: 25),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    merchantName,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
+                      color: Color(0xFF23274D),
                     ),
-                    decoration: const InputDecoration(
-                      labelText: 'Payment Amount',
-                      border: OutlineInputBorder(),
-                    ),
-                    keyboardType: TextInputType.number,
                   ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          _controller.text = '10000';
-                        },
-                        child: const Text('10K'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          _controller.text = '50000';
-                        },
-                        child: const Text('50K'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          _controller.text = '100000';
-                        },
-                        child: const Text('100K'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ),
-        ),
-      ),
-      bottomSheet: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
+            const SizedBox(height: 16),
             GestureDetector(
               onTap: () {
                 _showPaymentMethodSelection(context);
@@ -138,45 +121,114 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.account_balance_wallet),
+                    const Icon(Icons.account_balance_wallet,
+                        color: Color(0xFF23274D)),
                     const SizedBox(width: 16),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Pay with',
-                            style: TextStyle(fontSize: 14, color: Colors.grey),
+                            'Payment Method',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Color(0xFF8D8E98),
+                            ),
                           ),
                           Text(
                             selectedMethod,
                             style: const TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF23274D),
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    const Icon(Icons.more_vert),
+                    const Icon(Icons.arrow_drop_down),
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                context.push(widget.targetScreen);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.onSurface,
-                minimumSize: const Size(double.infinity, 50),
-                textStyle: const TextStyle(
-                  color: Colors.white,
-                ),
-                foregroundColor: Colors.white,
+            const SizedBox(height: 16),
+            Container(
+              height: 100,
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: const Text('Confirm Payment'),
-            )
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Amount',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF23274D),
+                    ),
+                  ),
+                  Expanded(
+                    child: TextField(
+                      controller: _controller,
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF23274D),
+                      ),
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(vertical: 0),
+                      ),
+                      keyboardType: TextInputType.number,
+                      onChanged: (value) {
+                        setState(() {
+                          final cleanedValue =
+                              value.replaceAll('Rp ', '').replaceAll('.', '');
+                          final formatted = formatCurrency(cleanedValue);
+                          _controller.value = TextEditingValue(
+                            text: formatted,
+                            selection: TextSelection.collapsed(
+                                offset: formatted.length),
+                          );
+                          isButtonActive = int.tryParse(cleanedValue) != null &&
+                              int.parse(cleanedValue) > 0;
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
           ],
+        ),
+      ),
+      bottomSheet: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ElevatedButton(
+          onPressed: isButtonActive
+              ? () {
+                  context.push(widget.targetScreen);
+                }
+              : null,
+          style: ElevatedButton.styleFrom(
+            backgroundColor:
+                isButtonActive ? const Color(0xFF23274D) : Colors.grey[400],
+            minimumSize: const Size(double.infinity, 50),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          child: const Text(
+            'TIME TO PAY',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );

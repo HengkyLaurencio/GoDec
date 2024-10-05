@@ -68,6 +68,20 @@ class _WalletPageState extends State<WalletPage> {
             Stack(
               clipBehavior: Clip.none,
               children: [
+                Container(
+                  width: double.infinity,
+                  height: 250,
+                  color: Colors.grey.shade800,
+                  margin: const EdgeInsets.only(bottom: 50),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(' '),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
                 Positioned(
                   left: 22.0,
                   top: 250 - overlayHeight,
