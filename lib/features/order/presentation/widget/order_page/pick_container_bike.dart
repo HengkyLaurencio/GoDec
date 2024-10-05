@@ -6,7 +6,7 @@ class PickContainerBike extends StatelessWidget {
   final VoidCallback onSelect;
 
   const PickContainerBike({
-    super.key, 
+    super.key,
     required this.pricePerKmBike,
     required this.isSelected,
     required this.onSelect,
@@ -39,7 +39,7 @@ class PickContainerBike extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             const Text(
-              'BikeDec',
+              'DecBike',
               style: TextStyle(fontSize: 16),
             ),
             const Spacer(),
