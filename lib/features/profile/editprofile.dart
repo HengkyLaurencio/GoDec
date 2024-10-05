@@ -16,7 +16,6 @@ class EditProfile extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-
             TextFormField(
               decoration: const InputDecoration(
                 labelText: 'Name',
@@ -24,15 +23,13 @@ class EditProfile extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-
             TextFormField(
               decoration: const InputDecoration(
-                labelText: 'Username',
+                labelText: 'Name',
                 border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),
-
             TextFormField(
               decoration: const InputDecoration(
                 labelText: 'Email',
@@ -41,7 +38,6 @@ class EditProfile extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 16),
-
             TextFormField(
               decoration: const InputDecoration(
                 labelText: 'Password',
@@ -50,7 +46,6 @@ class EditProfile extends StatelessWidget {
               obscureText: true,
             ),
             const SizedBox(height: 16),
-
             TextFormField(
               decoration: const InputDecoration(
                 labelText: 'Re-Enter Password',
@@ -59,19 +54,25 @@ class EditProfile extends StatelessWidget {
               obscureText: true,
             ),
             const SizedBox(height: 32),
-
             ElevatedButton(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Profil disimpan')),
+                  const SnackBar(content: Text('Profil Saved')),
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF23274D),
-                foregroundColor: Colors.white, 
+                backgroundColor:
+                    const Color(0xFF23274D),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 16.0), 
               ),
-              child: const Text('Save'),
-            ),
+              child: const Text(
+                'Save',
+                style: TextStyle(
+                  color: Colors.white, 
+                ),
+              ),
+            )
           ],
         ),
       ),

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 class InsuranceDetail4 extends StatelessWidget {
-  const InsuranceDetail4 ({super.key});
+  const InsuranceDetail4({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -27,17 +25,13 @@ class InsuranceDetail4 extends StatelessWidget {
                     left: 0,
                     right: 0,
                     child: Container(
-                      width: screenWidth,
-                      color: Colors.grey,
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.only(left: 20, bottom: 20, top: 190),
-                        child: Text(
-                          "Dukungan Perjalanan",
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.white,
-                          ),
+                      height: 250, 
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              'https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/krjogja/news/2023/05/31/507423/mengenal-lebih-jauh-asuransi-dwiguna-perlindungan-komprehensif-untuk-masa-depan-2305315.jpg'),
+                          fit: BoxFit
+                              .cover,
                         ),
                       ),
                     ),
@@ -116,8 +110,7 @@ class InsuranceDetail4 extends StatelessWidget {
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     backgroundColor: const Color(0xFF23274D),
