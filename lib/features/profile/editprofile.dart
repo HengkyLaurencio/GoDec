@@ -7,7 +7,7 @@ class EditProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Top-Up', style: TextStyle(color: Colors.white)),
+        title: const Text('Edit Profile', style: TextStyle(color: Colors.white)),
         backgroundColor: const Color(0xFF23274D),
         iconTheme: const IconThemeData(
         color: Colors.white)
@@ -25,7 +25,7 @@ class EditProfile extends StatelessWidget {
             const SizedBox(height: 16),
             TextFormField(
               decoration: const InputDecoration(
-                labelText: 'Name',
+                labelText: 'Username',
                 border: OutlineInputBorder(),
               ),
             ),
